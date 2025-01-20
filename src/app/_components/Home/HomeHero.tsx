@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Challenge, projects } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -316,7 +317,7 @@ const HomeHero = async () => {
           </div>
         </div>
       </div>
-      <div className="flex min-h-screen w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+      <div className="flex min-h-fit w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
         <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
           <h2>Users are in Love with Skills Challenges Program</h2>
           <p>
@@ -324,20 +325,82 @@ const HomeHero = async () => {
             for our dedication and expertise.
           </p>
         </div>
-        <div className="size-full flex flex-row">
+        <div className="mt-16 flex size-full w-[90vw] flex-col overflow-x-scroll lg:flex-row">
           {[1, 2, 3].map((item, i) => (
-            <div key={i}>
+            <div key={i} className="p-4 lg:w-1/3">
               <iframe
-              className="size-56"
+                className="h-56 w-full rounded-xl"
                 src="https://www.youtube.com/embed/xE_RWfn2ns8"
                 title="Unlocking Tech Job Opportunities Session by Umurava | Delivered by Vivens Uwizeyimana"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
-                
               ></iframe>
+              <div className="mt-8 flex flex-row gap-4 p-4">
+                <img
+                  alt=" "
+                  className="bg-umurava size-16 rounded-full"
+                  src={""}
+                />
+                <div className="flex flex-col gap-2">
+                  <h5>Manzi Jack</h5>
+                  <p>Product Designer, Kigali</p>
+                </div>
+              </div>
             </div>
           ))}
+        </div>
+      </div>
+      <div className="flex min-h-fit w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+        <h2>How to Get Started</h2>
+        <div className="mt-8 flex w-full flex-col gap-2 md:flex-row">
+          <div className="grid min-h-screen w-full grid-rows-2 gap-2">
+            <div className="flex flex-col gap-2 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 1
+              </span>
+              <h4>Sign up on Umurava Platform</h4>
+              <p>Submit your completed project for evaluation</p>
+              <div className="bg-umurava h-54 w-full" />
+            </div>
+            <div className="flex flex-col gap-2 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 2
+              </span>
+              <h4>Browse Open Challenges</h4>
+              <p>
+                Explore the range of challenges and hackathons and choose one
+                that aligns with your interests and career goals
+              </p>
+              <div className="bg-umurava h-54 w-full" />
+            </div>
+          </div>
+          <div className="flex min-h-screen w-full flex-col gap-2 ">
+            <div className="h-1/3 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 2
+              </span>
+              <h4>Register and participate</h4>
+              <p>Sign up for the challenge and start working on the project,</p>
+              <div className="bg-umurava h-54 w-full" />
+            </div>
+            <div className="flex h-1/3 flex-col gap-4 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 2
+              </span>
+              <h4>Submit your work</h4>
+              <p>Submit your completed project for evaluation</p>
+              <div className="bg-umurava h-54 w-full" />
+            </div>
+            <div className="flex h-1/3 flex-col gap-4 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 2
+              </span>
+              <h4>Receive Feedback and Recognition</h4>
+              <p>Get feedback on your work and celebrate your achievements</p>
+              <div className="bg-umurava h-54 w-full" />
+            </div>
+          </div>
         </div>
       </div>
     </>
