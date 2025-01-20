@@ -375,7 +375,7 @@ const HomeHero = async () => {
               <div className="bg-umurava h-54 w-full" />
             </div>
           </div>
-          <div className="flex min-h-screen w-full flex-col gap-2 ">
+          <div className="flex min-h-screen w-full flex-col gap-2">
             <div className="h-1/3 p-4">
               <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
                 Step 2
@@ -400,6 +400,22 @@ const HomeHero = async () => {
               <p>Get feedback on your work and celebrate your achievements</p>
               <div className="bg-umurava h-54 w-full" />
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="p-8 md:p-16">
+        <div className="bg-umurava grid min-h-[720px] grid-cols-1 p-8 md:p-16 lg:grid-cols-2">
+          <img src={""} alt="" className="min-h-72 bg-white" />
+          <div className="p-16 text-white flex justify-center flex-col gap-8">
+            <h2>Ready to Unlock Your Career Potential Today!</h2>
+            <p>
+              Join a challenge or a hackathon to gain valuable work experience,
+              build an impressive portofolio and increase your chances to land
+              job opportunities and accelerate your career growth
+            </p>
+            <Button asChild className="bg-white text-umurava p-4 hover:bg-white/70 size-fit">
+              <Link href={""}>View Challenge</Link>
+            </Button>
           </div>
         </div>
       </div>
