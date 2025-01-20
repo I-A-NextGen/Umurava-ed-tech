@@ -1,8 +1,15 @@
 import { Button } from "@/components/ui/button";
+import { Challenge, projects } from "@/lib/utils";
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import React from "react";
 
-const HomeHero = () => {
+const HomeHero = async () => {
+  const res = await fetch("https://nextgen-wehy.onrender.com/api/blogs", {
+    next: {
+      revalidate: 60,
+    },
+  });
   return (
     <>
       <div className="grid min-h-[720px] grid-cols-1 md:grid-cols-2">
@@ -203,8 +210,135 @@ const HomeHero = () => {
         </div>
       </div>
       {/* about */}
-      <div>
-        
+      <div className="flex min-h-fit w-full flex-col items-center gap-4 py-16">
+        <div className="flex w-full flex-col items-center justify-center gap-4 text-center">
+          <h2 className="w-full md:w-2/3">
+            Skills Challenges Cover various in-demand skills and Careers for the
+            digital economy
+          </h2>
+          <p>Explore the projects that various talents are working on.</p>
+        </div>
+        <div className="mt-8 flex flex-row flex-wrap justify-center gap-4 px-8 md:w-2/3 md:px-16 lg:px-32">
+          {projects.map((item, i) => (
+            <div
+              key={i}
+              className="hover:bg-umurava w-fit cursor-pointer rounded-xl p-4 duration-300 hover:text-white"
+            >
+              {item.text}
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Explore Challenges & Hackathons */}
+      <div className="flex w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+        <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
+          <h2>Explore Challenges & Hackathons</h2>
+          <p>
+            Join Skills Challenges Program to accelerate your career growth and
+            become part of Africa&apos; s largest workforce of digital
+            professionals.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 4].map((item) => (
+            <div
+              key={item}
+              className="text relative flex flex-col gap-4 rounded-lg p-4 capitalize"
+            >
+              <span className="absolute right-6 top-6 rounded-xl bg-green-700 p-2 px-4 text-white md:px-8">
+                Open
+              </span>
+              <div className="bg-umurava min-h-56 w-full rounded-xl"></div>
+              <h5>{Challenge.text}</h5>
+              <h6 className="opacity-80">skills needed:</h6>
+              <div className="flex flex-row flex-wrap gap-2 opacity-90">
+                {Challenge.skills.map((skill, i) => (
+                  <span
+                    className="text-umurava hover:bg-umurava border-umurava rounded-xl border p-2 px-4 font-light duration-300 hover:text-white"
+                    key={i}
+                  >
+                    {skill}{" "}
+                  </span>
+                ))}
+              </div>
+              <h6 className="opacity-80">
+                Seniority Level:{" "}
+                {Challenge.seniority.map((skill, i) => (
+                  <span
+                    className="cursor-pointer rounded-xl border font-light duration-300"
+                    key={i}
+                  >
+                    {skill}{" "}
+                  </span>
+                ))}
+              </h6>
+              <h6>
+                Timeline:{" "}
+                <span className="font-normal"> {Challenge.timeline} Days</span>
+              </h6>
+            </div>
+          ))}
+        </div>
+        <Button
+          asChild
+          variant={"ghost"}
+          className="border-umurava text-umurava mt-16 size-fit border px-8 py-4 hover:border-white"
+        >
+          <Link href={""}>View more</Link>
+        </Button>
+      </div>
+      <div className="flex min-h-screen w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+        <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
+          <h2>
+            What else can I gain from participating in Skills Challenges ?
+          </h2>
+          <p>
+            Join Skills Challenges Program to accelerate your career growth and
+            become part of Africa&apos;s largest workforce of digital
+            professionals.
+          </p>
+        </div>
+        <div className="mt-12 grid size-full grid-cols-1 lg:grid-cols-2">
+          <div className="grid grid-cols-2 grid-rows-2">
+            {[1, 2, 3, 4].map((item, i) => (
+              <div key={i} className="flex flex-col gap-4 p-4">
+                <div className="bg-umurava size-16 rounded-xl" />
+                <h6>Enhance Your Employment Path</h6>
+                <p className="opacity-60">
+                  Network with other talented individuals and learn from their
+                  experiences
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="p-8">
+            <div className="bg-umurava size-full"></div>
+          </div>
+        </div>
+      </div>
+      <div className="flex min-h-screen w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+        <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
+          <h2>Users are in Love with Skills Challenges Program</h2>
+          <p>
+            See what our clients say about working with us. Their success speaks
+            for our dedication and expertise.
+          </p>
+        </div>
+        <div className="size-full flex flex-row">
+          {[1, 2, 3].map((item, i) => (
+            <div key={i}>
+              <iframe
+              className="size-56"
+                src="https://www.youtube.com/embed/xE_RWfn2ns8"
+                title="Unlocking Tech Job Opportunities Session by Umurava | Delivered by Vivens Uwizeyimana"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                
+              ></iframe>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
