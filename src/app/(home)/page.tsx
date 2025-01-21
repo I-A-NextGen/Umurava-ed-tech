@@ -6,15 +6,10 @@ import Footer from "../_components/Footer";
 const page = () => {
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
+      
       <main>
         <HomeHero />
       </main>
-      <>
-        <Footer />
-      </>
     </>
   );
 };

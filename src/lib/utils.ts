@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const navlinks = [
   { href: "/", label: "Home" },
-  { href: "/", label: "Challenge & Hackthons" },
+  { href: "/Challenges-&-Hackathons", label: "Challenge & Hackthons" },
   { href: "/", label: "For Educational Institutions" },
   { href: "/", label: "About Us" },
   { href: "/", label: "Contact Us " },

@@ -21,6 +21,7 @@ export default {
   		colors: {
 			umurava: "#2b71f0",
 			umuravadark: "#001a40",
+			umuravawhite: "#f9fafb",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
