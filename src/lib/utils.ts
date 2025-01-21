@@ -9,7 +9,7 @@ export const navlinks = [
   { href: "/", label: "Home" },
   { href: "/Challenges-&-Hackathons", label: "Challenge & Hackthons" },
   { href: "/", label: "For Educational Institutions" },
-  { href: "/", label: "About Us" },
+  { href: "/about", label: "About Us" },
   { href: "/", label: "Contact Us " },
 ];
 

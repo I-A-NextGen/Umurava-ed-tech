@@ -18,6 +18,7 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+		
   		colors: {
 			umurava: "#2b71f0",
 			umuravadark: "#001a40",
