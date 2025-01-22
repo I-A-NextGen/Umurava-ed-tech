@@ -8,6 +8,7 @@ export default {
   	extend: {
   		fontFamily: {
 			dmsans:["DM Sans","serif"],
+			WorkSans: ["Work Sans", "sans-serif"],
   			sans: [
   				'var(--font-geist-sans)',
                     ...fontFamily.sans

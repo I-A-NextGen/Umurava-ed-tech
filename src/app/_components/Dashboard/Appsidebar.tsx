@@ -61,9 +61,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         {links.map((link, index) => (
           <Link key={index} href={link.href} passHref>
             <SidebarMenuItem
-              className={`flex items-center p-2 ${
+              className={`flex hover:bg-umuravawhite/10 duration-300  items-center p-2 ${
                 isActive(link.href)
-                  ? "bg-umuravawhite text-umurava"
+                  ? "bg-umuravawhite rounded-xl text-umurava"
                   : "text-white"
               }`}
             >
@@ -89,7 +89,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <>
             <>
               <SidebarGroupContent>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center mb-8 gap-4">
                   <div className="relative size-12 overflow-clip rounded-full border-2 border-white bg-white">
                     <Image
                       src={
