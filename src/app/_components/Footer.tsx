@@ -33,34 +33,34 @@ const Footer = () => {
       </div>
       <div className="grid grid-cols-4 py-10 border-b-2 border-white/30 ">
         <div className="flex flex-col p-4 gap-4 text-white">
-          <h3 className="mb-4">Our Address</h3>
-          <Link href={""} className="flex flex-row items-center">
+          <h4 className="mb-4">Our Address</h4>
+          <Link href={""} className="flex opacity-80 flex-row items-center">
             <TfiEmail className="mr-3" />
             career@tickets.com
           </Link>
-          <Link href={""} className="flex flex-row items-center">
+          <Link href={""} className="flex opacity-80 flex-row items-center">
             <ImLocation className="mr-3" />
             89 KG 14 Ave, Kigali
           </Link>
-          <Link href={""} className="flex flex-row items-center">
+          <Link href={""} className="flex opacity-80 flex-row items-center">
             <FaPhone className="mr-3" />
             +250 700 000{" "}
           </Link>
         </div>
         <div className="flex flex-col gap-4 p-4 text-white">
-          <h3 className="mb-4">
+          <h4 className="mb-4">
           Quick Links
-          </h3>
-          <Link href={""} className="flex flex-row items-center">Home</Link>
-          <Link href={""} className="flex flex-row items-center">Program</Link>
-          <Link href={""} className="flex flex-row items-center">About</Link>
-          <Link href={""} className="flex flex-row items-center">Contact Us</Link>
+          </h4>
+          <Link href={""} className="flex opacity-80 flex-row items-center">Home</Link>
+          <Link href={""} className="flex opacity-80 flex-row items-center">Program</Link>
+          <Link href={""} className="flex opacity-80 flex-row items-center">About</Link>
+          <Link href={""} className="flex opacity-80 flex-row items-center">Contact Us</Link>
 
         </div>
         <div className="col-span-2 text-white p-4">
-            <h3 className="md:w-2/3 mb-8">Join our newsletter to keep up to date with us!</h3>
-            <form action="" className="p-2 bg-white w-fit rounded-xl">
-                <input type="email" placeholder="Enter your email address" className="rounded-lg p-4 focus-visible:outline-none"/>
+            <h4 className="md:w-2/3 mb-8">Join our newsletter to keep up to date with us!</h4>
+            <form action="" className="p-2 bg-white w-full lg:w-4/5 flex justify-between rounded-xl">
+                <input type="email" placeholder="Enter your email address" className="rounded-lg text-black p-4 focus-visible:outline-none"/>
                 <Button className="size-fit p-4 bg-umuravadark hover:bg-umuravadark/70">Subscribe</Button>
             </form>
         </div>
