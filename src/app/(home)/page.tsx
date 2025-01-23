@@ -6,7 +6,6 @@ import Footer from "../_components/Footer";
 const page = () => {
   return (
     <>
-      
       <main>
         <HomeHero />
       </main>

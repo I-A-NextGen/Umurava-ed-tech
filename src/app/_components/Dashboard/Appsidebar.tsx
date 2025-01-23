@@ -35,10 +35,41 @@ interface LinkItem {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const router = usePathname();
+  // console.log(router);
+
+  let user = "user";
+
+  function whuichuser(){
+    let user = "user";
+    if (router === "/app/dashboard/admin") {
+      user = "admin";
+    }
+    else if(router === "/app/dashboard/user") {
+      user = "user";
+    }
+    return user
+  }
+
+  const isActive = (href: string) => {
+      if (router === "/app/dashboard/admin") {
+        user = "admin";
+        return router.replace("/app/dashboard/admin", "/") === href;
+      }
+      else if(router === "/app/dashboard/user") {
+        user = "user";
+        return router.replace("/app/dashboard/user", "/") === href;
+      }
+      else {
+        return router === href;
+      }
+      
+  };
+
   const links: LinkItem[] = [
     { label: "Dashboard", href: "/", icon: <HomeIcon /> },
-    { label: "Challenges & Hackathons", href: "/hackathons", icon: <File /> },
-    { label: "Community", href: "/community", icon: <PersonStanding /> },
+    { label: "Challenges & Hackathons", href: `${whuichuser()}/Hackathons`, icon: <File /> },
+    { label: "Community", href: `${user}/Community`, icon: <PersonStanding /> },
   ];
   const footerlinks: LinkItem[] = [
     { label: "Settings", href: "/", icon: <Settings /> },
@@ -46,11 +77,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     { label: "Refer family & friends", href: "/", icon: <Gift /> },
   ];
 
-  const router = usePathname();
-  console.log(router);
-
-  const isActive = (href: string) =>
-    router.replace("/app/dashboard", "/") === href;
+  
 
   return (
     <Sidebar className="bg-umurava">
@@ -61,7 +88,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         {links.map((link, index) => (
           <Link key={index} href={link.href} passHref>
             <SidebarMenuItem
-              className={`flex hover:bg-umuravawhite/10 duration-300  items-center p-2 ${
+              className={`flex hover:bg-umuravawhite/40 hover:text-white duration-300  items-center p-2 ${
                 isActive(link.href)
                   ? "bg-umuravawhite rounded-xl text-umurava"
                   : "text-white"
@@ -116,3 +143,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     </Sidebar>
   );
 }
+
+
