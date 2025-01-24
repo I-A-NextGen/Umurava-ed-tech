@@ -69,7 +69,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const links: LinkItem[] = [
     { label: "Dashboard", href: "/", icon: <HomeIcon /> },
     { label: "Challenges & Hackathons", href: `${whuichuser()}/Hackathons`, icon: <File /> },
-    { label: "Community", href: `${user}/Community`, icon: <PersonStanding /> },
+    { label: "Community", href: `${whuichuser()}/Community`, icon: <PersonStanding /> },
   ];
   const footerlinks: LinkItem[] = [
     { label: "Settings", href: "/", icon: <Settings /> },

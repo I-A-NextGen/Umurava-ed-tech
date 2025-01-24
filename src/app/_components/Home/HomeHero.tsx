@@ -45,7 +45,7 @@ const HomeHero = async () => {
                   cy="324"
                   r="278.5"
                   stroke="white"
-                  stroke-width="91"
+                  strokeWidth="91"
                   shapeRendering="crispEdges"
                 />
               </g>
@@ -57,9 +57,9 @@ const HomeHero = async () => {
                   width="656"
                   height="656"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feColorMatrix
                     in="SourceAlpha"
                     type="matrix"
@@ -405,7 +405,7 @@ const HomeHero = async () => {
       </div>
       <div className="p-8 md:p-16">
         <div className="bg-umurava grid min-h-[720px] grid-cols-1 p-8 md:p-16 lg:grid-cols-2">
-          <img src={""} alt="" className="min-h-72 bg-white" />
+          <img src={"https://umurava.africa/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhiring.5bc8908c.png&w=640&q=75"} alt="" className="min-h-72 bg-white" />
           <div className="p-16 text-white flex justify-center flex-col gap-8">
             <h2>Ready to Unlock Your Career Potential Today!</h2>
             <p>

@@ -37,7 +37,7 @@ const page = () => {
             </Button>
           </div>
         </div>
-        <div className='mt-8 grid grid-cols-1 md:grid-cols-3'>
+        <div className='mt-8 grid grid-cols-1 gap-4 md:grid-cols-3'>
           {
             [`1`, `2`, `3`, `4`, `5`, `6`].map((item, i) => (
               <TaskCard key={i} i={i} />
