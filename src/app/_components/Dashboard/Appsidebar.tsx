@@ -40,7 +40,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   let user = "user";
 
-  function whuichuser(){
+  function Whichuser(){
     let user = "user";
     if (router === "/app/dashboard/admin") {
       user = "admin";
@@ -68,8 +68,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const links: LinkItem[] = [
     { label: "Dashboard", href: "/", icon: <HomeIcon /> },
-    { label: "Challenges & Hackathons", href: `${whuichuser()}/Hackathons`, icon: <File /> },
-    { label: "Community", href: `${whuichuser()}/Community`, icon: <PersonStanding /> },
+    { label: "Challenges & Hackathons", href: `${Whichuser()}/Hackathons`, icon: <File /> },
+    { label: "Community", href: `${Whichuser()}/Community`, icon: <PersonStanding /> },
   ];
   const footerlinks: LinkItem[] = [
     { label: "Settings", href: "/", icon: <Settings /> },

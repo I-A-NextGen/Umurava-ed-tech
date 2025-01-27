@@ -80,10 +80,14 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background  text-foreground;
   }
 }
 
+
+*{
+  @apply font-WorkSans
+}
 h1 {
   @apply scroll-m-20 text-4xl md:text-6xl font-bold lg:text-7xl
 }

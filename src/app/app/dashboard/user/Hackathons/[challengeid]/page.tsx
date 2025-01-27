@@ -1,12 +1,9 @@
 import React from "react";
-import { Upperbar } from "../../page";
 import Markdown from "react-markdown";
 import { Button } from "@/components/ui/button";
+import { Upperbar } from "../../page";
 
-// async function getchallenges({ params }: { params: { challengeid: string } }) {
-//     const {challengeid} = await params;
-//     return challengeid;
-// }
+
 
 const markdowntext = `
 # Project Brief : Payroll and HR Management System

@@ -24,7 +24,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`font-dmsans`}>
+    <html lang="en" className={``}>
       <body>
         <SidebarProvider>
           <AppSidebar />

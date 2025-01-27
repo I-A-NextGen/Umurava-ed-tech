@@ -1,14 +1,14 @@
 import React from 'react'
-import { Upperbar } from '../page'
 import { Button } from '@/components/ui/button'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import TaskCard from '@/app/_components/Home/TaskCard'
+import { Upperbar } from '../../user/page'
 
 const page = () => {
   return (
     <div className='p-4'>
-        <Upperbar/>
+        <Upperbar />
         <div className='flex flex-col items-start justify-center gap-2 py-8'>
           <h4>Challenges</h4>
           <p>Join a challenge or a hackathon to gain valuable work experience,</p>
@@ -35,7 +35,6 @@ const page = () => {
               <span>Ongoing Challenge</span>
               <span className='bg-umurava/40 rounded-xl p-1 px-2 text-white'>0</span>
             </Button>
-            
           </div>
         </div>
         <div className='mt-8 grid grid-cols-1 gap-4 md:grid-cols-3'>

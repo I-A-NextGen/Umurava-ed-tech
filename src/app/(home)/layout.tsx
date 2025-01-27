@@ -15,7 +15,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`font-WorkSans`}>
+    <html lang="en" className={``}>
       <body>
         <header>
           <Navbar />

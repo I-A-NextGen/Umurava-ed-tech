@@ -8,12 +8,16 @@ interface Item {
 }
 
 const TaskCard = ({ i }: { i: number }) => {
+
+
+  const user = "user";
+
   return (
     <div
       key={i}
-      className="text relative flex flex-col gap-4 rounded-xl border-2 border-umuravadark/20 p-5 font-WorkSans capitalize"
+      className="text relative flex flex-col gap-4 rounded-xl border-2 border-umuravadark/20 p-5 capitalize"
     >
-      <span className="absolute right-6 top-6 rounded-xl bg-green-700 p-2 px-4 text-white md:px-8">
+      <span className="absolute right-8 top-8 rounded-xl bg-green-700 p-2 px-4 text-white md:px-8">
         Open
       </span>
       <div className="min-h-56 w-full rounded-xl bg-umurava"></div>

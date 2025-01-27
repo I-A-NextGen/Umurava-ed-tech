@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import TaskCard from "./TaskCard";
 
 const HomeHero = async () => {
   const res = await fetch("https://nextgen-wehy.onrender.com/api/blogs", {
@@ -31,120 +32,9 @@ const HomeHero = async () => {
         </div>
         <div className="grid grid-cols-2 gap-2 p-8 md:p-16">
           <div className="relative size-full overflow-clip rounded-xl bg-blue-500">
-            <svg
-              width="656"
-              height="656"
-              viewBox="0 0 656 656"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute -top-32 right-32 size-96"
-            >
-              <g filter="url(#filter0_d_491_15344)">
-                <circle
-                  cx="328"
-                  cy="324"
-                  r="278.5"
-                  stroke="white"
-                  strokeWidth="91"
-                  shapeRendering="crispEdges"
-                />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_d_491_15344"
-                  x="0"
-                  y="0"
-                  width="656"
-                  height="656"
-                  filterUnits="userSpaceOnUse"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                    result="hardAlpha"
-                  />
-                  <feOffset dy="4" />
-                  <feGaussianBlur stdDeviation="2" />
-                  <feComposite in2="hardAlpha" operator="out" />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in2="BackgroundImageFix"
-                    result="effect1_dropShadow_491_15344"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="effect1_dropShadow_491_15344"
-                    result="shape"
-                  />
-                </filter>
-              </defs>
-            </svg>
+
           </div>
           <div className="relative size-full overflow-clip rounded-xl bg-blue-500">
-            <svg
-              width="656"
-              height="656"
-              viewBox="0 0 656 656"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute right-32 top-32 size-96"
-            >
-              <g filter="url(#filter0_d_491_15344)">
-                <circle
-                  cx="328"
-                  cy="324"
-                  r="278.5"
-                  stroke="white"
-                  strokeWidth="91"
-                  shapeRendering="crispEdges"
-                />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_d_491_15344"
-                  x="0"
-                  y="0"
-                  width="656"
-                  height="656"
-                  filterUnits="userSpaceOnUse"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                    result="hardAlpha"
-                  />
-                  <feOffset dy="4" />
-                  <feGaussianBlur stdDeviation="2" />
-                  <feComposite in2="hardAlpha" operator="out" />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in2="BackgroundImageFix"
-                    result="effect1_dropShadow_491_15344"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="effect1_dropShadow_491_15344"
-                    result="shape"
-                  />
-                </filter>
-              </defs>
-            </svg>
           </div>
         </div>
       </div>
@@ -240,44 +130,9 @@ const HomeHero = async () => {
             professionals.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 4].map((item) => (
-            <div
-              key={item}
-              className="text relative flex flex-col gap-4 rounded-lg p-4 capitalize"
-            >
-              <span className="absolute right-6 top-6 rounded-xl bg-green-700 p-2 px-4 text-white md:px-8">
-                Open
-              </span>
-              <div className="bg-umurava min-h-56 w-full rounded-xl"></div>
-              <h5>{Challenge.text}</h5>
-              <h6 className="opacity-80">skills needed:</h6>
-              <div className="flex flex-row flex-wrap gap-2 opacity-90">
-                {Challenge.skills.map((skill, i) => (
-                  <span
-                    className="text-umurava hover:bg-umurava border-umurava rounded-xl border p-2 px-4 font-light duration-300 hover:text-white"
-                    key={i}
-                  >
-                    {skill}{" "}
-                  </span>
-                ))}
-              </div>
-              <h6 className="opacity-80">
-                Seniority Level:{" "}
-                {Challenge.seniority.map((skill, i) => (
-                  <span
-                    className="cursor-pointer rounded-xl border font-light duration-300"
-                    key={i}
-                  >
-                    {skill}{" "}
-                  </span>
-                ))}
-              </h6>
-              <h6>
-                Timeline:{" "}
-                <span className="font-normal"> {Challenge.timeline} Days</span>
-              </h6>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
+          {[1, 2, 4].map((item,i) => (
+            <TaskCard i={i} key={item}/>
           ))}
         </div>
         <Button
@@ -312,8 +167,8 @@ const HomeHero = async () => {
               </div>
             ))}
           </div>
-          <div className="p-8">
-            <div className="bg-umurava size-full"></div>
+          <div className="p-8 relative">
+            <Image src={"/skill section banner 1.png"} alt="" className="object-cover p-16" fill />
           </div>
         </div>
       </div>
@@ -361,7 +216,10 @@ const HomeHero = async () => {
               </span>
               <h4>Sign up on Umurava Platform</h4>
               <p>Submit your completed project for evaluation</p>
-              <div className="bg-umurava h-54 w-full" />
+              <div className="min-h-56 my-8 relative flex flex-row" >
+                <div className="flex-1"/>
+                <img src={"/Frame 1618868159 1.png"} alt="img" className="object-cover w-auto h-56 rounded-xl"  />
+              </div>
             </div>
             <div className="flex flex-col gap-2 p-4">
               <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
@@ -372,13 +230,16 @@ const HomeHero = async () => {
                 Explore the range of challenges and hackathons and choose one
                 that aligns with your interests and career goals
               </p>
-              <div className="bg-umurava h-54 w-full" />
+              <div className="min-h-56 my-8 relative flex flex-row" >
+                <div className="flex-1"/>
+                <img src={"/Challenges & Hackathons  Page 1.png"} alt="img" className="object-cover w-auto h-56 rounded-xl" />
+              </div>
             </div>
           </div>
           <div className="flex min-h-screen w-full flex-col gap-2">
-            <div className="h-1/3 p-4">
+            <div className="flex h-1/3 flex-col gap-4 p-4">
               <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
-                Step 2
+                Step 3
               </span>
               <h4>Register and participate</h4>
               <p>Sign up for the challenge and start working on the project,</p>
@@ -386,7 +247,7 @@ const HomeHero = async () => {
             </div>
             <div className="flex h-1/3 flex-col gap-4 p-4">
               <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
-                Step 2
+                Step 4
               </span>
               <h4>Submit your work</h4>
               <p>Submit your completed project for evaluation</p>
@@ -394,7 +255,7 @@ const HomeHero = async () => {
             </div>
             <div className="flex h-1/3 flex-col gap-4 p-4">
               <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
-                Step 2
+                Step 5
               </span>
               <h4>Receive Feedback and Recognition</h4>
               <p>Get feedback on your work and celebrate your achievements</p>
@@ -404,9 +265,12 @@ const HomeHero = async () => {
         </div>
       </div>
       <div className="p-8 md:p-16">
-        <div className="bg-umurava grid min-h-[720px] grid-cols-1 p-8 md:p-16 lg:grid-cols-2">
-          <img src={"https://umurava.africa/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhiring.5bc8908c.png&w=640&q=75"} alt="" className="min-h-72 bg-white" />
-          <div className="p-16 text-white flex justify-center flex-col gap-8">
+        <div className="bg-umurava grid min-h-fit rounded-xl grid-cols-1 gap-8 p-8 md:p-16 lg:grid-cols-2">
+          <div className="relative">
+          <Image src={"/Rectangle 4386 1.png"} alt="" className=" bg-white object-cover rounded-xl" fill/>
+
+          </div>
+          <div className="text-white md:p-16 flex justify-center flex-col gap-8">
             <h2>Ready to Unlock Your Career Potential Today!</h2>
             <p>
               Join a challenge or a hackathon to gain valuable work experience,
