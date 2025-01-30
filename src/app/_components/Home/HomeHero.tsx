@@ -180,6 +180,7 @@ const HomeHero = async () => {
             for our dedication and expertise.
           </p>
         </div>
+        <div className="overflow-hidden">
         <div className="mt-16 flex size-full w-[90vw] flex-col overflow-x-scroll lg:flex-row">
           {[1, 2, 3].map((item, i) => (
             <div key={i} className="p-4 lg:w-1/3">
@@ -204,6 +205,7 @@ const HomeHero = async () => {
               </div>
             </div>
           ))}
+        </div>
         </div>
       </div>
       <div className="flex min-h-fit w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
