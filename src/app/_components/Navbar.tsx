@@ -5,7 +5,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="flex min-h-[96px] items-center font-dmsans justify-between px-8 md:px-16">
+    <nav className="flex min-h-[96px] items-center justify-between px-8 md:px-16">
       <Link href={"/"}>Umurava</Link>
       <div className="flex flex-row gap-4">
         {
@@ -15,7 +15,7 @@ const Navbar = () => {
         }
       </div>
       <Button asChild size={"lg"}>
-        <Link href={"/"}>Join the Program</Link>
+        <Link href={"/app/dashboard"}>Join the Program</Link>
       </Button>
     </nav>
   );

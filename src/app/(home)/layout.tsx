@@ -2,6 +2,8 @@ import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import Navbar from "../_components/Navbar";
+import Footer from "../_components/Footer";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -13,8 +15,16 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`font-WorkSans`}>
-      <body>{children}</body>
+    <html lang="en" className={``}>
+      <body>
+        <header>
+          <Navbar />
+        </header>
+        {children}
+        <>
+        <Footer />
+      </>
+      </body>
     </html>
   );
 }

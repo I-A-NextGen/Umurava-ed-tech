@@ -1,3 +1,5 @@
+import { AppSidebar } from "@/app/_components/Dashboard/Appsidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
@@ -13,8 +15,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`font-WorkSans`}>
-      <body>{children}</body>
+    <html lang="en" className={``}>
+      <body>
+        <SidebarProvider>
+          <AppSidebar />
+          <main className="bg-umuravawhite size-full min-h-screen">
+            {children}
+          </main>
+        </SidebarProvider>
+      </body>
     </html>
   );
 }

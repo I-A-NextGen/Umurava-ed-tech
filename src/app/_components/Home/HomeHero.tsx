@@ -1,8 +1,17 @@
 import { Button } from "@/components/ui/button";
+import { Challenge, projects } from "@/lib/utils";
+import { revalidatePath } from "next/cache";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import TaskCard from "./TaskCard";
 
-const HomeHero = () => {
+const HomeHero = async () => {
+  const res = await fetch("https://nextgen-wehy.onrender.com/api/blogs", {
+    next: {
+      revalidate: 60,
+    },
+  });
   return (
     <>
       <div className="grid min-h-[720px] grid-cols-1 md:grid-cols-2">
@@ -23,120 +32,9 @@ const HomeHero = () => {
         </div>
         <div className="grid grid-cols-2 gap-2 p-8 md:p-16">
           <div className="relative size-full overflow-clip rounded-xl bg-blue-500">
-            <svg
-              width="656"
-              height="656"
-              viewBox="0 0 656 656"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute -top-32 right-32 size-96"
-            >
-              <g filter="url(#filter0_d_491_15344)">
-                <circle
-                  cx="328"
-                  cy="324"
-                  r="278.5"
-                  stroke="white"
-                  stroke-width="91"
-                  shapeRendering="crispEdges"
-                />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_d_491_15344"
-                  x="0"
-                  y="0"
-                  width="656"
-                  height="656"
-                  filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
-                >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                    result="hardAlpha"
-                  />
-                  <feOffset dy="4" />
-                  <feGaussianBlur stdDeviation="2" />
-                  <feComposite in2="hardAlpha" operator="out" />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in2="BackgroundImageFix"
-                    result="effect1_dropShadow_491_15344"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="effect1_dropShadow_491_15344"
-                    result="shape"
-                  />
-                </filter>
-              </defs>
-            </svg>
+
           </div>
           <div className="relative size-full overflow-clip rounded-xl bg-blue-500">
-            <svg
-              width="656"
-              height="656"
-              viewBox="0 0 656 656"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute right-32 top-32 size-96"
-            >
-              <g filter="url(#filter0_d_491_15344)">
-                <circle
-                  cx="328"
-                  cy="324"
-                  r="278.5"
-                  stroke="white"
-                  strokeWidth="91"
-                  shapeRendering="crispEdges"
-                />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_d_491_15344"
-                  x="0"
-                  y="0"
-                  width="656"
-                  height="656"
-                  filterUnits="userSpaceOnUse"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                    result="hardAlpha"
-                  />
-                  <feOffset dy="4" />
-                  <feGaussianBlur stdDeviation="2" />
-                  <feComposite in2="hardAlpha" operator="out" />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in2="BackgroundImageFix"
-                    result="effect1_dropShadow_491_15344"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="effect1_dropShadow_491_15344"
-                    result="shape"
-                  />
-                </filter>
-              </defs>
-            </svg>
           </div>
         </div>
       </div>
@@ -203,8 +101,189 @@ const HomeHero = () => {
         </div>
       </div>
       {/* about */}
-      <div>
-        
+      <div className="flex min-h-fit w-full flex-col items-center gap-4 py-16">
+        <div className="flex w-full flex-col items-center justify-center gap-4 text-center">
+          <h2 className="w-full md:w-2/3">
+            Skills Challenges Cover various in-demand skills and Careers for the
+            digital economy
+          </h2>
+          <p>Explore the projects that various talents are working on.</p>
+        </div>
+        <div className="mt-8 flex flex-row flex-wrap justify-center gap-4 px-8 md:w-2/3 md:px-16 lg:px-32">
+          {projects.map((item, i) => (
+            <div
+              key={i}
+              className="hover:bg-umurava w-fit cursor-pointer rounded-xl p-4 duration-300 hover:text-white"
+            >
+              {item.text}
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Explore Challenges & Hackathons */}
+      <div className="flex w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+        <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
+          <h2>Explore Challenges & Hackathons</h2>
+          <p>
+            Join Skills Challenges Program to accelerate your career growth and
+            become part of Africa&apos; s largest workforce of digital
+            professionals.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
+          {[1, 2, 4].map((item,i) => (
+            <TaskCard i={i} key={item}/>
+          ))}
+        </div>
+        <Button
+          asChild
+          variant={"ghost"}
+          className="border-umurava text-umurava mt-16 size-fit border px-8 py-4 hover:border-white"
+        >
+          <Link href={""}>View more</Link>
+        </Button>
+      </div>
+      <div className="flex min-h-screen w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+        <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
+          <h2>
+            What else can I gain from participating in Skills Challenges ?
+          </h2>
+          <p>
+            Join Skills Challenges Program to accelerate your career growth and
+            become part of Africa&apos;s largest workforce of digital
+            professionals.
+          </p>
+        </div>
+        <div className="mt-12 grid size-full grid-cols-1 lg:grid-cols-2">
+          <div className="grid grid-cols-2 grid-rows-2">
+            {[1, 2, 3, 4].map((item, i) => (
+              <div key={i} className="flex flex-col gap-4 p-4">
+                <div className="bg-umurava size-16 rounded-xl" />
+                <h6>Enhance Your Employment Path</h6>
+                <p className="opacity-60">
+                  Network with other talented individuals and learn from their
+                  experiences
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="p-8 relative">
+            <Image src={"/skill section banner 1.png"} alt="" className="object-cover p-16" fill />
+          </div>
+        </div>
+      </div>
+      <div className="flex min-h-fit w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+        <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
+          <h2>Users are in Love with Skills Challenges Program</h2>
+          <p>
+            See what our clients say about working with us. Their success speaks
+            for our dedication and expertise.
+          </p>
+        </div>
+        <div className="overflow-hidden">
+        <div className="mt-16 flex size-full w-[90vw] flex-col overflow-x-scroll lg:flex-row">
+          {[1, 2, 3].map((item, i) => (
+            <div key={i} className="p-4 lg:w-1/3">
+              <iframe
+                className="h-56 w-full rounded-xl"
+                src="https://www.youtube.com/embed/xE_RWfn2ns8"
+                title="Unlocking Tech Job Opportunities Session by Umurava | Delivered by Vivens Uwizeyimana"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+              ></iframe>
+              <div className="mt-8 flex flex-row gap-4 p-4">
+                <img
+                  alt=" "
+                  className="bg-umurava size-16 rounded-full"
+                  src={""}
+                />
+                <div className="flex flex-col gap-2">
+                  <h5>Manzi Jack</h5>
+                  <p>Product Designer, Kigali</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        </div>
+      </div>
+      <div className="flex min-h-fit w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
+        <h2>How to Get Started</h2>
+        <div className="mt-8 flex w-full flex-col gap-2 md:flex-row">
+          <div className="grid min-h-screen w-full grid-rows-2 gap-2">
+            <div className="flex flex-col gap-2 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 1
+              </span>
+              <h4>Sign up on Umurava Platform</h4>
+              <p>Submit your completed project for evaluation</p>
+              <div className="min-h-56 my-8 relative flex flex-row" >
+                <div className="flex-1"/>
+                <img src={"/Frame 1618868159 1.png"} alt="img" className="object-cover w-auto h-56 rounded-xl"  />
+              </div>
+            </div>
+            <div className="flex flex-col gap-2 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 2
+              </span>
+              <h4>Browse Open Challenges</h4>
+              <p>
+                Explore the range of challenges and hackathons and choose one
+                that aligns with your interests and career goals
+              </p>
+              <div className="min-h-56 my-8 relative flex flex-row" >
+                <div className="flex-1"/>
+                <img src={"/Challenges & Hackathons  Page 1.png"} alt="img" className="object-cover w-auto h-56 rounded-xl" />
+              </div>
+            </div>
+          </div>
+          <div className="flex min-h-screen w-full flex-col gap-2">
+            <div className="flex h-1/3 flex-col gap-4 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 3
+              </span>
+              <h4>Register and participate</h4>
+              <p>Sign up for the challenge and start working on the project,</p>
+              <div className="bg-umurava h-54 w-full" />
+            </div>
+            <div className="flex h-1/3 flex-col gap-4 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 4
+              </span>
+              <h4>Submit your work</h4>
+              <p>Submit your completed project for evaluation</p>
+              <div className="bg-umurava h-54 w-full" />
+            </div>
+            <div className="flex h-1/3 flex-col gap-4 p-4">
+              <span className="bg-umurava w-fit rounded-xl p-2 px-4 text-white">
+                Step 5
+              </span>
+              <h4>Receive Feedback and Recognition</h4>
+              <p>Get feedback on your work and celebrate your achievements</p>
+              <div className="bg-umurava h-54 w-full" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="p-8 md:p-16">
+        <div className="bg-umurava grid min-h-fit rounded-xl grid-cols-1 gap-8 p-8 md:p-16 lg:grid-cols-2">
+          <div className="relative">
+          <Image src={"/Rectangle 4386 1.png"} alt="" className=" bg-white object-cover rounded-xl" fill/>
+
+          </div>
+          <div className="text-white md:p-16 flex justify-center flex-col gap-8">
+            <h2>Ready to Unlock Your Career Potential Today!</h2>
+            <p>
+              Join a challenge or a hackathon to gain valuable work experience,
+              build an impressive portofolio and increase your chances to land
+              job opportunities and accelerate your career growth
+            </p>
+            <Button asChild className="bg-white text-umurava p-4 hover:bg-white/70 size-fit">
+              <Link href={""}>View Challenge</Link>
+            </Button>
+          </div>
+        </div>
       </div>
     </>
   );
