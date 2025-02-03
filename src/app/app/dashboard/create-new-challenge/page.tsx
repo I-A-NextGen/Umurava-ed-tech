@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
 import { usePathname } from "next/navigation";
 import { FilterIcon, Search } from "lucide-react";
-import { Upperbar } from "../page";
+import { Upperbar } from "@/app/_components/Dashboard/Upperbar";
 
 interface FormData {
   title: string;

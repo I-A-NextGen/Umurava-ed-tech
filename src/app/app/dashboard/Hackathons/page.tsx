@@ -4,12 +4,12 @@ import { Button } from '@/components/ui/button'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import TaskCard from '@/app/_components/Home/TaskCard'
-import { Upperbar } from '../page'
 import Link from 'next/link'
 import { FilterIcon, Plus, Search } from 'lucide-react'
 import Breadcrumbs from '@/app/_components/Dashboard/Breadcrumbs'
 import { Input } from '@/components/ui/input'
 import { usePathname } from 'next/navigation'
+import { Upperbar } from '@/app/_components/Dashboard/Upperbar'
 
 const page = () => {
   const router = usePathname()

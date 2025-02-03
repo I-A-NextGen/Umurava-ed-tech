@@ -2,7 +2,6 @@
 import React from "react";
 import Markdown from "react-markdown";
 import { Button } from "@/components/ui/button";
-import { Upperbar } from "../../page";
 import { partipants } from "@/lib/utils";
 import { ChallengeDetails } from "@/app/_components/ChallengeDetails";
 import Link from "next/link";
@@ -10,6 +9,7 @@ import { useParams, usePathname } from "next/navigation";
 import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
 import { Input } from "@/components/ui/input";
 import { FilterIcon, Search } from "lucide-react";
+import { Upperbar } from "@/app/_components/Dashboard/Upperbar";
 
 type UserRole = "user" | "admin";
 
