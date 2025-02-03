@@ -2,10 +2,10 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import useUser from "./hooks/useUser";
 
-const protectedRoutes = ["/app/dashboard"];
+const protectedRoutes = ["/app"];
 
 export default async function middleware(request: NextRequest) {
-  const { user} = await useUser();
+  const { user } = await useUser();
 
   const { pathname } = request.nextUrl;
 
@@ -14,7 +14,7 @@ export default async function middleware(request: NextRequest) {
   );
 
   if (isProtected && !user) {
-    return NextResponse.redirect(new URL("/auth/sign-in", request.url));
+    return NextResponse.redirect(new URL("/auth/sign-in", request.url), 302);
   }
 
   return NextResponse.next();
