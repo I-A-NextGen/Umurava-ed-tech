@@ -6,8 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import React, { useState } from "react";
 import { Upperbar } from "../../user/page";
-import '@vaadin/rich-text-editor';
-import { RichTextEditor } from "@vaadin/rich-text-editor";
+import "@vaadin/rich-text-editor";
+import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
+import { usePathname } from "next/navigation";
+import { FilterIcon, Search } from "lucide-react";
 
 interface FormData {
   title: string;
@@ -18,6 +20,7 @@ interface FormData {
   projectDescription: string;
   projectBrief: string;
   projectTasks: string;
+  projectRequirements:String
 }
 
 interface Errors {
@@ -29,12 +32,30 @@ interface Errors {
   projectDescription?: string;
   projectBrief?: string;
   projectTasks?: string;
+  projectRequirements?:String;
+  projectDeliverables?:String
 }
 
 const page = () => {
+  const router = usePathname()
   return (
     <>
       <Upperbar />
+      <div className="p-6 flex flex-row justify-between items-center">
+        <Breadcrumbs pathname={router.toString()} />
+        <div className="flex flex-row items-center w-fit">
+          <div className="flex flex-row gap-4">
+            <label className="relative w-32">
+              <Input type="text" placeholder="search" className=" p-4" />
+              <Search className="absolute right-2 -translate-y-1/2 top-1/2 text-umurava" />
+            </label>
+            <Button variant={"ghost"} size={"icon"} className="p-4">
+              <FilterIcon />
+            </Button>
+          </div>
+
+        </div>
+      </div>
       <div className="p-6"></div>
       <div className="grid w-full place-items-center py-16">
         <div className="flex w-[624px] flex-col items-center gap-4 rounded-xl p-16 pb-0 ring-2 ring-umuravadark/5">
@@ -55,6 +76,7 @@ function Formdata() {
     moneyPrize: "",
     contactEmail: "",
     projectDescription: "",
+    projectRequirements: "",
     projectBrief: "",
     projectTasks: "",
   });
@@ -71,18 +93,20 @@ function Formdata() {
 
   const validateForm = () => {
     const newErrors: Errors = {};
-    if (!formData.title) newErrors.title = "Title is required";
-    if (!formData.deadline) newErrors.deadline = "Deadline is required";
-    if (!formData.duration) newErrors.duration = "Duration is required";
-    if (!formData.moneyPrize) newErrors.moneyPrize = "Money Prize is required";
+    if (!formData.title) newErrors.title = "*";
+    if (!formData.deadline) newErrors.deadline = "*";
+    if (!formData.duration) newErrors.duration = "*";
+    if (!formData.moneyPrize) newErrors.moneyPrize = "*";
     if (!formData.contactEmail)
-      newErrors.contactEmail = "Contact Email is required";
+      newErrors.contactEmail = "*";
     if (!formData.projectDescription)
-      newErrors.projectDescription = "Project Description is required";
+      newErrors.projectDescription = "*";
+    if (!formData.projectRequirements)
+      newErrors.projectRequirements = "*";
     if (!formData.projectBrief)
-      newErrors.projectBrief = "Project Brief is required";
+      newErrors.projectBrief = "*";
     if (!formData.projectTasks)
-      newErrors.projectTasks = "Project Tasks is required";
+      newErrors.projectTasks = "*";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -162,14 +186,14 @@ function Formdata() {
           />
         </label>
       </div>
-    <label>
-      <h6>Project Description</h6>
-      <Textarea
-      className={`mt-4 p-6 ${errors.projectDescription ? "border-red-500" : ""}`}
-        value={formData.projectDescription}
-      />
-      Keep this simple of 250 character
-    </label>
+      <label>
+        <h6>Project Description</h6>
+        <Textarea
+          className={`mt-4 p-6 ${errors.projectDescription ? "border-red-500" : ""}`}
+          value={formData.projectDescription}
+        />
+        Keep this simple of 250 character
+      </label>
       <label>
         <h6>Project Brief</h6>
         <Textarea
@@ -194,6 +218,19 @@ function Formdata() {
         />
         Keep this simple of 500 character
       </label>
+      <label>
+        <h6>Project Requirements</h6>
+        <Textarea
+          placeholder="Enter text here..."
+          className={`my-4 p-6 ${errors.projectRequirements ? "border-red-500" : ""}`}
+          name="projectRequirements"
+          rows={8}
+          value={formData.projectRequirements}
+          onChange={handleChange}
+        />
+        Keep this simple of 500 character
+      </label>
+      
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Button
           className="h-fit py-6 text-sm text-umurava hover:bg-red-50 hover:text-red-500"

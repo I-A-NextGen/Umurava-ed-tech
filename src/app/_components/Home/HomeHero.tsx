@@ -14,12 +14,12 @@ const HomeHero = async () => {
   });
   return (
     <>
-      <div className="grid min-h-[720px] grid-cols-1 md:grid-cols-2">
+      <div className="grid min-h-[720px] grid-cols-1 lg:grid-cols-2">
         <div className="ic flex flex-col justify-center gap-4 px-8 md:px-16">
           <h1 className="text-blue-700">
             Build Work Experience through Skills Challenges Program
           </h1>
-          <p>
+          <p className="my-8">
             Enhance your Employability and Accelerate your Career Growth by
             working on Hands-on projects & hackathons from various businesses &
             organizations.
@@ -30,11 +30,11 @@ const HomeHero = async () => {
             </Link>
           </Button>
         </div>
-        <div className="grid grid-cols-2 gap-2 p-8 md:p-16">
-          <div className="relative size-full overflow-clip rounded-xl bg-blue-500">
+        <div className="grid md:grid-cols-2  gap-2 p-8 md:p-16">
+          <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
 
           </div>
-          <div className="relative size-full overflow-clip rounded-xl bg-blue-500">
+          <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@ const HomeHero = async () => {
         </div>
       </div>
       {/* about */}
-      <div className="flex min-h-fit w-full flex-col items-center gap-4 py-16">
+      <div className="flex min-h-fit w-full flex-col items-center gap-4 px-8 py-16">
         <div className="flex w-full flex-col items-center justify-center gap-4 text-center">
           <h2 className="w-full md:w-2/3">
             Skills Challenges Cover various in-demand skills and Careers for the
@@ -196,7 +196,7 @@ const HomeHero = async () => {
                 <img
                   alt=" "
                   className="bg-umurava size-16 rounded-full"
-                  src={""}
+                  src={"/Rectangle 4386 1.png"}
                 />
                 <div className="flex flex-col gap-2">
                   <h5>Manzi Jack</h5>
@@ -267,8 +267,8 @@ const HomeHero = async () => {
         </div>
       </div>
       <div className="p-8 md:p-16">
-        <div className="bg-umurava grid min-h-fit rounded-xl grid-cols-1 gap-8 p-8 md:p-16 lg:grid-cols-2">
-          <div className="relative">
+        <div className="bg-umurava grid rounded-xl grid-cols-1 gap-8 p-8 md:p-16 lg:grid-cols-2">
+          <div className="relative min-h-96">
           <Image src={"/Rectangle 4386 1.png"} alt="" className=" bg-white object-cover rounded-xl" fill/>
 
           </div>

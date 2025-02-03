@@ -9,7 +9,7 @@ export function ChallengeDetails({email,category,Duration,Prize} : {email?:strin
             <div className="flex flex-row gap-4">
                 <span className="p-6 text-umurava rounded-full bg-umurava/20"><TfiEmail/></span>
                 <div className="flex flex-col gap-2">
-                    <h6 className="text-umuravablack text-lg">{email ?? "talent@umurava.africa"}</h6>
+                    <h6 className="text-umuravablack text-lg">{(email || "") ?? "talent@umurava.africa"}</h6>
                     <span className="text-lg">Contact Email</span>
                 </div>
                 
@@ -17,7 +17,7 @@ export function ChallengeDetails({email,category,Duration,Prize} : {email?:strin
             <div className="flex flex-row gap-4">
                 <span className="p-6 text-umurava rounded-full bg-umurava/20"><GoBriefcase /></span>
                 <div className="flex flex-col gap-2">
-                    <h6 className="text-umuravablack text-lg">{category ?? "Web design"}</h6>
+                    <h6 className="text-umuravablack text-lg">{(category || "") ?? "Web design"}</h6>
                     <span className="text-lg">Challenge Category</span>
                 </div>
                 
@@ -25,7 +25,7 @@ export function ChallengeDetails({email,category,Duration,Prize} : {email?:strin
             <div className="flex flex-row gap-4">
                 <span className="p-6 text-umurava rounded-full bg-umurava/20"><FaRegCalendar /></span>
                 <div className="flex flex-col gap-2">
-                    <h6 className="text-umuravablack text-lg">{Duration ?? "7 Days"}</h6>
+                    <h6 className="text-umuravablack text-lg">{(Duration || "") ?? "7 Days"}</h6>
                     <span className="text-lg">Duration</span>
                 </div>
                 
@@ -33,7 +33,7 @@ export function ChallengeDetails({email,category,Duration,Prize} : {email?:strin
             <div className="flex flex-row gap-4">
                 <span className="p-6 text-umurava rounded-full bg-umurava/20"><MdAttachMoney /></span>
                 <div className="flex flex-col gap-2">
-                    <h6 className="text-umuravablack text-lg">{Prize ?? "$150 - $400"}</h6>
+                    <h6 className="text-umuravablack text-lg">{(Prize || "") ?? "$150 - $400"}</h6>
                     <span className="text-lg">Money Prize</span>
                 </div>
                 

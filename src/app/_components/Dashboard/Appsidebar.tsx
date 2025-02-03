@@ -42,23 +42,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   function Whichuser(){
     let user = "user";
-    if (router === "/app/dashboard/admin") {
+    if (router.includes("/admin")) {
       user = "admin";
-    }
-    else if(router === "/app/dashboard/user") {
-      user = "user";
+      return user
     }
     return user
   }
 
   const isActive = (href: string) => {
-      if (router === "/app/dashboard/admin") {
-        user = "admin";
-        return router.replace("/app/dashboard/admin", "/") === href;
-      }
-      else if(router === "/app/dashboard/user") {
-        user = "user";
-        return router.replace("/app/dashboard/user", "/") === href;
+      if (router === "/app/dashboard") {
+        return router.replace("/app/dashboard", "/") === href;
       }
       else {
         return router === href;
@@ -68,8 +61,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const links: LinkItem[] = [
     { label: "Dashboard", href: "/", icon: <HomeIcon /> },
-    { label: "Challenges & Hackathons", href: `${Whichuser()}/Hackathons`, icon: <File /> },
-    { label: "Community", href: `${Whichuser()}/Community`, icon: <PersonStanding /> },
+    { label: "Challenges & Hackathons", href: `/app/dashboard/Hackathons`, icon: <File /> },
+    { label: "Community", href: `/app/dashboard/Community`, icon: <PersonStanding /> },
   ];
   const footerlinks: LinkItem[] = [
     { label: "Settings", href: "/", icon: <Settings /> },
