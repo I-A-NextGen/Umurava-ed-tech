@@ -38,7 +38,7 @@ const TaskCard = ({ i }: { i: number }) => {
             (
             {Challenge.seniority.map((skill, i) => (
               <span
-                className="cursor-pointer border text-lg font-normal  duration-300"
+                className="cursor-pointer ml-2 text-lg font-normal  duration-300"
                 key={i}
               >
                 {skill}
@@ -56,7 +56,7 @@ const TaskCard = ({ i }: { i: number }) => {
         className="size-fit bg-umurava/60 px-10 font-semibold duration-300 hover:bg-umurava"
         asChild
       >
-        <Link href={""}>View Challenge</Link>
+        <Link href={"/app/dashboard/Hackathons/challenge"}>View Challenge</Link>
       </Button>
     </div>
   );

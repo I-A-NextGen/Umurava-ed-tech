@@ -31,7 +31,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <div className="grid grid-cols-4 py-10 border-b-2 border-white/30 ">
+      <div className="grid md:grid-cols-4 py-10 border-b-2 border-white/30 ">
         <div className="flex flex-col p-4 gap-4 text-white">
           <h4 className="mb-4">Our Address</h4>
           <Link href={""} className="flex opacity-80 flex-row items-center">

@@ -5,9 +5,11 @@ import { DateField, DateInput } from "@/components/ui/datefield-rac";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import React, { useState } from "react";
-import { Upperbar } from "../../user/page";
-import '@vaadin/rich-text-editor';
-import { RichTextEditor } from "@vaadin/rich-text-editor";
+import { useRouter } from "next/router";
+import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
+import { usePathname } from "next/navigation";
+import { FilterIcon, Search } from "lucide-react";
+import { Upperbar } from "@/app/_components/Dashboard/Upperbar";
 
 interface FormData {
   title: string;
@@ -32,10 +34,27 @@ interface Errors {
 }
 
 const page = () => {
+  const router = usePathname()
   return (
     <>
       <Upperbar />
+      <div className="p-6 flex flex-row justify-between items-center">
+        <Breadcrumbs pathname={router.toString()} />
+        <div className="flex flex-row items-center w-fit">
+          <div className="flex flex-row gap-4">
+            <label className="relative w-32">
+              <Input type="text" placeholder="search" className=" p-4" />
+              <Search className="absolute right-2 -translate-y-1/2 top-1/2 text-umurava" />
+            </label>
+            <Button variant={"ghost"} size={"icon"} className="p-4">
+              <FilterIcon />
+            </Button>
+          </div>
+
+        </div>
+      </div>
       <div className="p-6"></div>
+
       <div className="grid w-full place-items-center py-16">
         <div className="flex w-[624px] flex-col items-center gap-4 rounded-xl p-16 pb-0 ring-2 ring-umuravadark/5">
           <h4>Create New Challenge</h4>
@@ -162,14 +181,14 @@ function Formdata() {
           />
         </label>
       </div>
-    <label>
-      <h6>Project Description</h6>
-      <Textarea
-      className={`mt-4 p-6 ${errors.projectDescription ? "border-red-500" : ""}`}
-        value={formData.projectDescription}
-      />
-      Keep this simple of 250 character
-    </label>
+      <label>
+        <h6>Project Description</h6>
+        <Textarea
+          className={`mt-4 p-6 ${errors.projectDescription ? "border-red-500" : ""}`}
+          value={formData.projectDescription}
+        />
+        Keep this simple of 250 character
+      </label>
       <label>
         <h6>Project Brief</h6>
         <Textarea
@@ -194,6 +213,7 @@ function Formdata() {
         />
         Keep this simple of 500 character
       </label>
+
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Button
           className="h-fit py-6 text-sm text-umurava hover:bg-red-50 hover:text-red-500"

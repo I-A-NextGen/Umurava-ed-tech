@@ -1,7 +1,13 @@
 import "@/styles/globals.css";
-
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { Inter } from "next/font/google";
+import { Provider } from "react-redux";
+import { store } from "@/Redux/store";
+import Navbar from "./_components/Navbar";
+import Footer from "./_components/Footer";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -13,8 +19,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`font-WorkSans`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body className={inter.className}>
+        <>
+          {children}
+        </>
+      </body>
     </html>
   );
 }

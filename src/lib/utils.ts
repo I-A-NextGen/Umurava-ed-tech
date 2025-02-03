@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import axios from "axios"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -121,3 +122,12 @@ export const Skills = [
   "As the portfolio of the Students",
   "As part of Capstone Projects or final-year assignments ",
 ]
+
+export const api = axios.create({
+  baseURL: process.env.BACKEND_URL,
+  withCredentials:true,
+  headers:{
+    'Content-Type': 'application/json',
+    Accept:'application/json'
+  }
+})
