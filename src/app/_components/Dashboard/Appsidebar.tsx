@@ -60,7 +60,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   };
 
   const links: LinkItem[] = [
-    { label: "Dashboard", href: "/", icon: <HomeIcon /> },
+    { label: "Dashboard", href: "/app/dashboard", icon: <HomeIcon /> },
     { label: "Challenges & Hackathons", href: `/app/dashboard/Hackathons`, icon: <File /> },
     { label: "Community", href: `/app/dashboard/Community`, icon: <PersonStanding /> },
   ];
@@ -74,10 +74,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar className="bg-umurava">
-      <SidebarHeader className="bg-umurava p-4">
-        <h4 className="text-white">Umurava</h4>
+      <SidebarHeader className="bg-umurava h-fit p-4">
+        <Image src={"/Rectangle 1537.png"} alt="logo" width={56} height={40} />
       </SidebarHeader>
-      <SidebarContent className="bg-umurava px-2 pt-16">
+      <SidebarContent className="bg-umurava px-2 pt-8">
         {links.map((link, index) => (
           <Link key={index} href={link.href} passHref>
             <SidebarMenuItem

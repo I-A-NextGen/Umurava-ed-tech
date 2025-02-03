@@ -5,11 +5,11 @@ import { DateField, DateInput } from "@/components/ui/datefield-rac";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import React, { useState } from "react";
-import { Upperbar } from "../../user/page";
 import "@vaadin/rich-text-editor";
 import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
 import { usePathname } from "next/navigation";
 import { FilterIcon, Search } from "lucide-react";
+import { Upperbar } from "../../page";
 
 interface FormData {
   title: string;

@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import React from "react";
+import { FaArrowUpLong, FaPeopleGroup } from "react-icons/fa6";
 import { IoMdDocument, IoMdNotificationsOutline } from "react-icons/io";
 import { IoDocumentTextOutline } from "react-icons/io5";
 
 const page = () => {
+  const user = "admin"
   return (
     <div className="size-full bg-umuravawhite">
       <Upperbar />
@@ -15,12 +17,12 @@ const page = () => {
         <h3>Welcome back Hilaire,</h3>
         <p>Build Work Experience through Skills Challenges</p>
       </div>
-      <Belowsection />
+      {user === "admin" ? <BelowsectionAdmin /> : <Belowsection />}
       <div className="p-4">
         <h4>Recent Challenges</h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {
-            [1, 2, 3, 4, 5, 6].map((item,i) => (
+            [1, 2, 3, 4, 5, 6].map((item, i) => (
               <TaskCard key={i} i={i} />
             ))
           }
@@ -87,4 +89,149 @@ export function Belowsection() {
       </div>
     </div>
   );
+}
+
+export function BelowsectionAdmin() {
+  return (
+
+    <div className="grid grid-cols-6  grid-rows-4 gap-4 p-4">
+      <div className="col-span-3 min-h-56 row-span-2 p-4">
+        <div className="flex flex-col size-full justify-center">
+        <div className="w-full flex flex-row justify-between">
+          <div className="flex-1" />
+          <select>
+            <option>This day</option>
+            <option value="">This Week</option>
+            <option value="">This Month</option>
+          </select>
+        </div>
+        <div className="flex flex-row items-center">
+          <div className="p-4 bg-umurava/20 size-fit rounded-full">
+            <IoDocumentTextOutline className="text-umurava" size={24} />
+          </div>
+          <div className="flex flex-col items-start justify-center p-4">
+            <p>Total Challenge</p>
+            <div className="flex flex-row items-center gap-2">
+              <h6>29,405</h6>
+              <div className="flex flex-row items-center gap-2 p-2 bg-umurava/20 rounded-xl">
+                <FaArrowUpLong className="text-umurava" size={12} />
+                <span>15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div className="col-span-3 row-span-2 col-start-4 p-4">
+      <div className="flex flex-col size-full justify-center">
+        <div className="w-full flex flex-row justify-between">
+          <div className="flex-1" />
+          <select>
+            <option>This day</option>
+            <option value="">This Week</option>
+            <option value="">This Month</option>
+          </select>
+        </div>
+        <div className="flex flex-row items-center">
+          <div className="p-4 bg-umurava/20 size-fit rounded-full">
+            <FaPeopleGroup  className="text-umurava" size={24} />
+          </div>
+          <div className="flex flex-col items-start justify-center p-4">
+            <p>Total Participants</p>
+            <div className="flex flex-row items-center gap-2">
+              <h6>29,405</h6>
+              <div className="flex flex-row items-center gap-2 p-2 bg-umurava/20 rounded-xl">
+                <FaArrowUpLong className="text-umurava" size={12} />
+                <span>15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div className="col-span-2 row-span-2 row-start-3 p-4">
+      <div className="flex flex-col size-full justify-center">
+        <div className="w-full flex flex-row justify-between">
+          <div className="flex-1" />
+          <select>
+            <option>This day</option>
+            <option value="">This Week</option>
+            <option value="">This Month</option>
+          </select>
+        </div>
+        <div className="flex flex-row items-center">
+          <div className="p-4 bg-umurava/20 size-fit rounded-full">
+            <IoDocumentTextOutline className="text-umurava" size={24} />
+          </div>
+          <div className="flex flex-col items-start justify-center p-4">
+            <p>Completed Challenges</p>
+            <div className="flex flex-row items-center gap-2">
+              <h6>5,837</h6>
+              <div className="flex flex-row items-center gap-2 p-2 bg-umurava/20 rounded-xl">
+                <FaArrowUpLong className="text-umurava" size={12} />
+                <span>15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div className="col-span-2 row-span-2 col-start-3 row-start-3 p-4">
+      <div className="flex flex-col size-full justify-center">
+        <div className="w-full flex flex-row justify-between">
+          <div className="flex-1" />
+          <select>
+            <option>This day</option>
+            <option value="">This Week</option>
+            <option value="">This Month</option>
+          </select>
+        </div>
+        <div className="flex flex-row items-center">
+          <div className="p-4 bg-umurava/20 size-fit rounded-full">
+            <IoDocumentTextOutline className="text-umurava" size={24} />
+          </div>
+          <div className="flex flex-col items-start justify-center p-4">
+            <p>Open Challenges</p>
+            <div className="flex flex-row items-center gap-2">
+              <h6>5,837</h6>
+              <div className="flex flex-row items-center gap-2 p-2 bg-umurava/20 rounded-xl">
+                <FaArrowUpLong className="text-umurava" size={12} />
+                <span>15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div className="col-span-2 row-span-2 col-start-5 row-start-3 p-4">
+      <div className="flex flex-col size-full justify-center">
+        <div className="w-full flex flex-row justify-between">
+          <div className="flex-1" />
+          <select>
+            <option>This day</option>
+            <option value="">This Week</option>
+            <option value="">This Month</option>
+          </select>
+        </div>
+        <div className="flex flex-row items-center">
+          <div className="p-4 bg-umurava/20 size-fit rounded-full">
+            <IoDocumentTextOutline className="text-umurava" size={24} />
+          </div>
+          <div className="flex flex-col items-start justify-center p-4">
+            <p>Ongoing Challenges</p>
+            <div className="flex flex-row items-center gap-2">
+              <h6>5,837</h6>
+              <div className="flex flex-row items-center gap-2 p-2 bg-umurava/20 rounded-xl">
+                <FaArrowUpLong className="text-umurava" size={12} />
+                <span>15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  )
+
 }

@@ -37,7 +37,7 @@ const page = () => {
         <p>Join a challenge or a hackathon to gain valuable work experience,</p>
       </div>
       <div>
-        <div className={`grid grid-cols-1 md:grid-cols-4 ${user === "admin" && "md:grid-cols-5"} gap-8`}>
+        <div className={`grid grid-cols-1 md:grid-cols-4 ${user === "admin" && "md:grid-cols-5"} gap-2`}>
           <Button className='py-6 bg-umurava/20 text-umurava hover:bg-umurava hover:text-white duration-300 rounded-xl'>
             <IoDocumentTextOutline />
             <span>All Challenge</span>
