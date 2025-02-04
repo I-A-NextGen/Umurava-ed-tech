@@ -11,6 +11,18 @@ export default {
         WorkSans: ["Work Sans", "sans-serif"],
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: 'inherit',
+            a: {
+              color: 'inherit',
+              textDecoration: 'none',
+            },
+          },
+        },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -98,7 +110,7 @@ export default {
     },
   },
   plugins: [
-	require("@tailwindcss/typography"), 
-	require("tailwindcss-animate")
-],
+    require("@tailwindcss/typography"), 
+    require("tailwindcss-animate")
+  ],
 } satisfies Config;

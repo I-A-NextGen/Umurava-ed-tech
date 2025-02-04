@@ -156,7 +156,7 @@ const page = () => {
                     size={"lg"}
                     className="w-full bg-umurava/80 py-4 text-lg hover:bg-umurava"
                   >
-                    <Link href={`/app/dashboard/Hackathons/${challengeid}/edit`}>
+                    <Link href={`/app/dashboard/${challengeid}/edit`}>
                       Edit{" "}
                     </Link>
                   </Button>

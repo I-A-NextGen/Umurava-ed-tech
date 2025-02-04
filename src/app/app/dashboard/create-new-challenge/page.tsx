@@ -1,15 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { DateField, DateInput } from "@/components/ui/datefield-rac";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { FilterIcon, Search } from "lucide-react";
+import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
 import { Upperbar } from "@/app/_components/Dashboard/Upperbar";
+import dynamic from 'next/dynamic';
+import 'react-quill/dist/quill.snow.css';
 
 interface FormData {
   title: string;
@@ -34,7 +34,8 @@ interface Errors {
 }
 
 const page = () => {
-  const router = usePathname()
+  const router = usePathname();
+
   return (
     <>
       <Upperbar />
@@ -50,7 +51,6 @@ const page = () => {
               <FilterIcon />
             </Button>
           </div>
-
         </div>
       </div>
       <div className="p-6"></div>
@@ -67,7 +67,7 @@ const page = () => {
 };
 
 function Formdata() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     title: "",
     deadline: "",
     duration: "",
@@ -88,6 +88,13 @@ function Formdata() {
     });
   };
 
+  const handleEditorChange = (value: string, field: keyof FormData) => {
+    setFormData({
+      ...formData,
+      [field]: value,
+    });
+  };
+
   const validateForm = () => {
     const newErrors: Errors = {};
     if (!formData.title) newErrors.title = "Title is required";
@@ -102,6 +109,14 @@ function Formdata() {
       newErrors.projectBrief = "Project Brief is required";
     if (!formData.projectTasks)
       newErrors.projectTasks = "Project Tasks is required";
+
+    // Validate character limits
+    if (formData.projectDescription.length > 250)
+      newErrors.projectDescription = "Project Description must be 250 characters or less";
+    if (formData.projectBrief.length > 50)
+      newErrors.projectBrief = "Project Brief must be 50 characters or less";
+    if (formData.projectTasks.length > 500)
+      newErrors.projectTasks = "Project Tasks must be 500 characters or less";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -183,35 +198,57 @@ function Formdata() {
       </div>
       <label>
         <h6>Project Description</h6>
-        <Textarea
-          className={`mt-4 p-6 ${errors.projectDescription ? "border-red-500" : ""}`}
+        <EditorChallenge
+          className={`mt-8 ${errors.projectDescription ? "border-red-500" : ""}`}
           value={formData.projectDescription}
+          onChange={(value:string) => handleEditorChange(value, "projectDescription")}
+          maxLength={250}
         />
-        Keep this simple of 250 character
+        <div className="text-sm text-gray-500">
+          {formData.projectDescription.length}/250 characters
+        </div>
+        {errors.projectDescription && (
+          <div className="text-red-500 text-sm">{errors.projectDescription}</div>
+        )}
+        <p>Keep this simple of 250 characters</p>
       </label>
       <label>
         <h6>Project Brief</h6>
-        <Textarea
+        <EditorChallenge
           placeholder="Enter text here..."
-          className={`my-4 p-6 ${errors.projectBrief ? "border-red-500" : ""}`}
+          className={`my-8 ${errors.projectBrief ? "border-red-500" : ""}`}
           name="projectBrief"
           rows={8}
           value={formData.projectBrief}
-          onChange={handleChange}
+          onChange={(value:string) => handleEditorChange(value, "projectBrief")}
+          maxLength={50}
         />
-        Keep this simple of 50 character
+        <div className="text-sm text-gray-500">
+          {formData.projectBrief.length}/50 characters
+        </div>
+        {errors.projectBrief && (
+          <div className="text-red-500 text-sm">{errors.projectBrief}</div>
+        )}
+        <p>Keep this simple of 50 characters</p>
       </label>
       <label>
         <h6>Project Description & Tasks</h6>
-        <Textarea
+        <EditorChallenge
           placeholder="Enter text here..."
-          className={`my-4 p-6 ${errors.projectTasks ? "border-red-500" : ""}`}
+          className={`my-8 ${errors.projectTasks ? "border-red-500" : ""}`}
           name="projectTasks"
           rows={8}
           value={formData.projectTasks}
-          onChange={handleChange}
+          onChange={(value:string) => handleEditorChange(value, "projectTasks")}
+          maxLength={500}
         />
-        Keep this simple of 500 character
+        <div className="text-sm text-gray-500">
+          {formData.projectTasks.length}/500 characters
+        </div>
+        {errors.projectTasks && (
+          <div className="text-red-500 text-sm">{errors.projectTasks}</div>
+        )}
+        <p>Keep this simple of 500 characters</p>
       </label>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -233,5 +270,51 @@ function Formdata() {
     </form>
   );
 }
+
+
+const ReactQuill = dynamic(() => import('react-quill-new'), {
+  ssr: false,
+  loading: () => <p>Loading editor...</p>
+});
+
+const EditorChallenge = ({ value, onChange, className, maxLength }: any) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const modules = {
+    toolbar: [
+      ['bold', 'italic'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }]
+    ]
+  };
+
+  const formats = ['bold', 'italic', 'list'];
+
+  const handleChange = (content: string) => {
+    if (content.length <= maxLength) {
+      onChange(content);
+    }
+  };
+
+  if (!mounted) {
+    return <div className={className}>Loading editor...</div>;
+  }
+
+  return (
+    <div className={className}>
+      <ReactQuill
+        theme="snow"
+        value={value}
+        onChange={handleChange}
+        modules={modules}
+        formats={formats}
+        placeholder="Enter your project description here..."
+      />
+    </div>
+  );
+};
 
 export default page;
