@@ -15,15 +15,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={``}>
-      <body>
-        <SidebarProvider>
-          <AppSidebar />
-          <main className="bg-umuravawhite size-full min-h-screen">
-            {children}
-          </main>
-        </SidebarProvider>
-      </body>
-    </html>
+    <div className="bg-umuravawhite">
+      <SidebarProvider>
+        <AppSidebar />
+        <main className="bg-umuravawhite size-full min-h-screen">
+          {children}
+        </main>
+      </SidebarProvider>
+    </div>
   );
 }
