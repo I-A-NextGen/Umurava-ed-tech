@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Challenge } from "@/lib/utils";
+import { Challenge, cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 
@@ -7,7 +7,7 @@ interface Item {
   id: number;
 }
 
-const TaskCard = ({ i }: { i: number }) => {
+const TaskCard = ({ i, className }: { i: number, className?: string }) => {
 
 
   const user = "user";
@@ -15,7 +15,10 @@ const TaskCard = ({ i }: { i: number }) => {
   return (
     <div
       key={i}
-      className="text relative flex flex-col gap-4 rounded-xl border-2 border-umuravadark/20 p-5 capitalize"
+      className={cn(
+        `text relative flex flex-col gap-4 rounded-xl border-2 border-umuravadark/20 p-5 capitalize`,
+        className
+      )}
     >
       <span className="absolute right-8 top-8 rounded-xl bg-green-700 p-2 px-4 text-white md:px-8">
         Open

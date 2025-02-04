@@ -25,9 +25,9 @@ const Page = () => {
           </p>
         </div>
       </div>
-      <div className="grid min-h-screen grid-cols-1 gap-2 px-8 md:grid-cols-2 md:px-16 lg:grid-cols-4 pb-32">
+      <div className=" min-h-screen gap-2 w-full px-8 flex flex-row flex-wrap md:px-16 pb-32">
         {taks.map((item, i) => (
-          <TaskCard key={i} i={i} />
+          <TaskCard key={i} className="w-" i={i} />
         ))}
       </div>
     </>

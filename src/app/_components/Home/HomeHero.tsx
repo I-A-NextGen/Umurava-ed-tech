@@ -1,22 +1,52 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { Challenge, projects } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TaskCard from "./TaskCard";
+import { IconsSchoolCase } from "../icons/icons";
+import Avatars from "../Avatars";
+import { ArrowRight } from "lucide-react";
+import Slider from "./Slider";
+import VideoSlider from "./SliderVideo";
 
-const HomeHero = async () => {
-  const res = await fetch("https://nextgen-wehy.onrender.com/api/blogs", {
-    next: {
-      revalidate: 60,
-    },
-  });
+interface Item {
+  logo: string
+  title: string
+  image: string
+}
+
+const HomeHero = () => {
+  const item: Item = {
+    logo: "/Frame 1618868163.png",
+    title:
+      "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
+    image: "/payrolldashboard 1.png",
+  }
+  const items: Item[] = [item, item, item]
+
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [items.length])
+
   return (
     <>
       <div className="grid min-h-[720px] grid-cols-1 lg:grid-cols-2">
+        <div className="absolute flex p-2 px-4 z-20 rounded-full bg-white items-center left-1/2 bottom-16 -translate-x-1/2 -translate-y-1/2">
+          <Avatars />
+          <span className="text-sm font-semibold ml-4">20K+ <br />Talents</span>
+        </div>
         <div className="ic flex flex-col justify-center gap-4 px-8 md:px-16">
-          <h1 className="text-blue-700">
+          <h1 className="text-blue-700 text-5xl">
             Build Work Experience through Skills Challenges Program
           </h1>
           <p className="my-8">
@@ -32,9 +62,11 @@ const HomeHero = async () => {
         </div>
         <div className="grid md:grid-cols-2  gap-2 p-8 md:p-16">
           <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
-
+            <img alt="" src="/joyful-group-classmates 1.png" className="absolute h-full w-full object-cover" />
           </div>
           <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
+            <img alt="" src="/Group 18311.png" className="absolute h-full w-full object-cover" />
+
           </div>
         </div>
       </div>
@@ -50,7 +82,9 @@ const HomeHero = async () => {
         </div>
         <div className="grid min-h-[720px] w-full gap-4 text-white md:mt-16 lg:grid-cols-2 lg:grid-rows-2 lg:px-32">
           <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 lg:col-span-2 lg:p-16">
-            <span className="size-12 bg-white text-blue-700"></span>
+            <span className="size-12 bg-white grid place-items-center text-blue-700">
+              <IconsSchoolCase />
+            </span>
 
             <h4>Build a Strong Portfolio and Hand-On Experience</h4>
             <p>
@@ -62,7 +96,9 @@ const HomeHero = async () => {
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:p-16">
-            <span className="size-12 bg-white text-blue-700"></span>
+            <span className="size-12 bg-white grid place-items-center text-blue-700">
+              <IconsSchoolCase />
+            </span>
             <h4>Enhance Your Employment Path</h4>
             <p>
               elop the in-demand skills and build a strong portofolio to
@@ -70,7 +106,9 @@ const HomeHero = async () => {
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:p-16">
-            <span className="size-12 bg-white text-blue-700"></span>
+            <span className="size-12 bg-white grid place-items-center text-blue-700">
+              <IconsSchoolCase />
+            </span>
             <h4>Earn Recognition and Prizes</h4>
             <p>
               Earn both Money and Knowledge Prizes by participating in various
@@ -119,20 +157,25 @@ const HomeHero = async () => {
             </div>
           ))}
         </div>
+        <div className="md:p-32 w-full">
+
+        <Slider/>
+        </div>
+
       </div>
       {/* Explore Challenges & Hackathons */}
       <div className="flex w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
         <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
           <h2>Explore Challenges & Hackathons</h2>
-          <p>
+          <p className="my-8">
             Join Skills Challenges Program to accelerate your career growth and
             become part of Africa&apos; s largest workforce of digital
             professionals.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
-          {[1, 2, 4].map((item,i) => (
-            <TaskCard i={i} key={item}/>
+          {[1, 2, 4].map((item, i) => (
+            <TaskCard i={i} key={item} />
           ))}
         </div>
         <Button
@@ -172,41 +215,15 @@ const HomeHero = async () => {
           </div>
         </div>
       </div>
-      <div className="flex min-h-fit w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
-        <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
+      <div className="flex min-h-fit w-full flex-col items-start justify-center p-8 md:px-16 lg:px-32">
+        <div className="flex w-full flex-col my-8 items-start justify-start gap-4 text-start md:w-1/3">
           <h2>Users are in Love with Skills Challenges Program</h2>
           <p>
             See what our clients say about working with us. Their success speaks
             for our dedication and expertise.
           </p>
         </div>
-        <div className="overflow-hidden">
-        <div className="mt-16 flex size-full w-[90vw] flex-col overflow-x-scroll lg:flex-row">
-          {[1, 2, 3].map((item, i) => (
-            <div key={i} className="p-4 lg:w-1/3">
-              <iframe
-                className="h-56 w-full rounded-xl"
-                src="https://www.youtube.com/embed/xE_RWfn2ns8"
-                title="Unlocking Tech Job Opportunities Session by Umurava | Delivered by Vivens Uwizeyimana"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-              ></iframe>
-              <div className="mt-8 flex flex-row gap-4 p-4">
-                <img
-                  alt=" "
-                  className="bg-umurava size-16 rounded-full"
-                  src={"/Rectangle 4386 1.png"}
-                />
-                <div className="flex flex-col gap-2">
-                  <h5>Manzi Jack</h5>
-                  <p>Product Designer, Kigali</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        </div>
+        <VideoSlider />
       </div>
       <div className="flex min-h-fit w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
         <h2>How to Get Started</h2>
@@ -219,8 +236,8 @@ const HomeHero = async () => {
               <h4>Sign up on Umurava Platform</h4>
               <p>Submit your completed project for evaluation</p>
               <div className="min-h-56 my-8 relative flex flex-row" >
-                <div className="flex-1"/>
-                <img src={"/Frame 1618868159 1.png"} alt="img" className="object-cover w-auto h-56 rounded-xl"  />
+                <div className="flex-1" />
+                <img src={"/Frame 1618868159 1.png"} alt="img" className="object-cover w-auto h-56 rounded-xl" />
               </div>
             </div>
             <div className="flex flex-col gap-2 p-4">
@@ -233,7 +250,7 @@ const HomeHero = async () => {
                 that aligns with your interests and career goals
               </p>
               <div className="min-h-56 my-8 relative flex flex-row" >
-                <div className="flex-1"/>
+                <div className="flex-1" />
                 <img src={"/Challenges & Hackathons  Page 1.png"} alt="img" className="object-cover w-auto h-56 rounded-xl" />
               </div>
             </div>
@@ -269,7 +286,7 @@ const HomeHero = async () => {
       <div className="p-8 md:p-16">
         <div className="bg-umurava grid rounded-xl grid-cols-1 gap-8 p-8 md:p-16 lg:grid-cols-2">
           <div className="relative min-h-96">
-          <Image src={"/Rectangle 4386 1.png"} alt="" className=" bg-white object-cover rounded-xl" fill/>
+            <Image src={"/Rectangle 4386 1.png"} alt="" className=" bg-white object-cover rounded-xl" fill />
 
           </div>
           <div className="text-white md:p-16 flex justify-center flex-col gap-8">
