@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import TaskCard from "./TaskCard";
-import { IconsSchoolCase } from "../icons/icons";
+import { HalfRoundedWhite, IconCertificate, IconDiploma, IconGrowth, IconsSchoolCase } from "../icons/icons";
 import Avatars from "../Avatars";
 import { ArrowRight } from "lucide-react";
 import Slider from "./Slider";
@@ -62,9 +62,11 @@ const HomeHero = () => {
         </div>
         <div className="grid md:grid-cols-2  gap-2 p-8 md:p-16">
           <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
+            <HalfRoundedWhite />
             <img alt="" src="/joyful-group-classmates 1.png" className="absolute h-full w-full object-cover" />
           </div>
           <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
+            <HalfRoundedWhite className="absolute rotate-90 right-0 -top-6" />
             <img alt="" src="/Group 18311.png" className="absolute h-full w-full object-cover" />
 
           </div>
@@ -82,7 +84,7 @@ const HomeHero = () => {
         </div>
         <div className="grid min-h-[720px] w-full gap-4 text-white md:mt-16 lg:grid-cols-2 lg:grid-rows-2 lg:px-32">
           <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 lg:col-span-2 lg:p-16">
-            <span className="size-12 bg-white grid place-items-center text-blue-700">
+            <span className="size-12 rounded-xl bg-white grid place-items-center text-blue-700">
               <IconsSchoolCase />
             </span>
 
@@ -96,7 +98,7 @@ const HomeHero = () => {
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:p-16">
-            <span className="size-12 bg-white grid place-items-center text-blue-700">
+            <span className="size-12 rounded-xl bg-white grid place-items-center text-blue-700">
               <IconsSchoolCase />
             </span>
             <h4>Enhance Your Employment Path</h4>
@@ -106,7 +108,7 @@ const HomeHero = () => {
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:p-16">
-            <span className="size-12 bg-white grid place-items-center text-blue-700">
+            <span className="size-12 rounded-xl bg-white grid place-items-center text-blue-700">
               <IconsSchoolCase />
             </span>
             <h4>Earn Recognition and Prizes</h4>
@@ -151,19 +153,18 @@ const HomeHero = () => {
           {projects.map((item, i) => (
             <div
               key={i}
-              className="hover:bg-umurava w-fit cursor-pointer rounded-xl p-4 duration-300 hover:text-white"
+              className="hover:bg-umurava w-fit cursor-pointer bg-[#f1f1f1] rounded-xl p-4 duration-300 hover:text-white"
             >
               {item.text}
             </div>
           ))}
         </div>
         <div className="md:p-32 w-full">
-
-        <Slider/>
+          <Slider />
         </div>
 
       </div>
-      {/* Explore Challenges & Hackathons */}
+      
       <div className="flex w-full flex-col items-center justify-center p-8 md:px-16 lg:px-32">
         <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-2/3">
           <h2>Explore Challenges & Hackathons</h2>
@@ -198,14 +199,15 @@ const HomeHero = () => {
           </p>
         </div>
         <div className="mt-12 grid size-full grid-cols-1 lg:grid-cols-2">
-          <div className="grid grid-cols-2 grid-rows-2">
-            {[1, 2, 3, 4].map((item, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {HomeChallenge.map((item, i) => (
               <div key={i} className="flex flex-col gap-4 p-4">
-                <div className="bg-umurava size-16 rounded-xl" />
-                <h6>Enhance Your Employment Path</h6>
+                <div className="bg-umurava size-16 rounded-xl grid place-items-center">
+                  {item.icon}
+                </div>
+                <h6>{item.title}</h6>
                 <p className="opacity-60">
-                  Network with other talented individuals and learn from their
-                  experiences
+                  {item.p}
                 </p>
               </div>
             ))}
@@ -305,5 +307,28 @@ const HomeHero = () => {
     </>
   );
 };
+
+const HomeChallenge = [
+  {
+    title:"Enhance Your Employment Path",
+    p:"Network with other talented individuals and learn from their experiences ",
+    icon:<IconsSchoolCase />
+  },
+  {
+    title:"Earn Recognition and Prizes",
+    p:"Gain valuable experience and knowledge to advance your career in the digital economy: ",
+    icon:<IconDiploma/>
+  },
+  {
+    title:"Personal Growth",
+    p:"Challenge yourself, learn new skills, and expand your professional network.  ",
+    icon:<IconGrowth/>
+  },
+  {
+    title:"Learn from Industry Experts",
+    p:"Access valuable insights and guidance from experienced professionals in the digital careers fields and spaces. ",
+    icon:<IconCertificate/>
+  },
+] 
 
 export default HomeHero;

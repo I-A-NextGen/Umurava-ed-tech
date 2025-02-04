@@ -71,7 +71,7 @@ export default function VideoSlider() {
         style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
       >
         {videos.map((video, index) => (
-          <div key={index} className="w-1/3 flex-shrink-0">
+          <div key={index} className="md:w-1/3 flex-shrink-0">
             <div className="p-4">
               <iframe
                 className="h-40 w-full rounded-xl"

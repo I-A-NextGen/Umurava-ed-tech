@@ -18,7 +18,7 @@ export default function Slider() {
       "The Embedded Finance Platform and Payroll Management Software Solutions for your organization and Workforce.",
     image: "/payrolldashboard 1.png",
   }
-  const items: Item[] = [item, item, item]
+  const items: Item[] = [item, item, item,item]
 
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -34,13 +34,13 @@ export default function Slider() {
     <div className="relative w-full h-[512px] overflow-hidden ">
         <div className="p-4 flex flex-row absolute bottom-4 left-1/2 -translate-x-1/2 z-20 gap-4">
             {items.map((item, i) => (
-                <div key={i} className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-500 ease-in-out shadow-md ${i === currentIndex ? "bg-white" : "bg-umurava"}`}></div>
+                <div key={i} className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-500 ease-in-out shadow-md ${i === currentIndex ? "bg-slate-50 ring-1" : "bg-umurava"}`}></div>
             ))}
         </div>
       {items.map((item, i) => (
         <div
           key={i}
-          className={`absolute top-0 left-0 w-full h-full bg-slate-200 p-4 md:p-8 transition-transform duration-500 ease-in-out ${
+          className={`absolute top-0 left-0 w-full h-full bg-[#f1f1f1] rounded-lg p-4 md:p-8 transition-transform duration-500 ease-in-out ${
             i === currentIndex ? "translate-x-0" : "translate-x-full"
           }`}
         >

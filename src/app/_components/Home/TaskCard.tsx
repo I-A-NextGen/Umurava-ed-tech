@@ -16,7 +16,7 @@ const TaskCard = ({ i, className }: { i: number, className?: string }) => {
     <div
       key={i}
       className={cn(
-        `text relative flex flex-col gap-4 rounded-xl border-2 border-umuravadark/20 p-5 capitalize`,
+        `text relative flex flex-col gap-4 rounded-xl border-2 border-umuravadark/10 p-5 capitalize`,
         className
       )}
     >
@@ -56,7 +56,7 @@ const TaskCard = ({ i, className }: { i: number, className?: string }) => {
         </h6>
       </div>
       <Button
-        className="size-fit bg-umurava/60 px-10 font-semibold duration-300 hover:bg-umurava"
+        className="size-fit bg-umurava px-10 font-semibold duration-300 hover:bg-umuravadark"
         asChild
       >
         <Link href={"/app/dashboard/Hackathons/challenge"}>View Challenge</Link>
