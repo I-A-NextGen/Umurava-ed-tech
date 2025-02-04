@@ -1,3 +1,4 @@
+import { HalfRoundedWhite, IconsSchoolCase } from "@/app/_components/icons/icons";
 import { Button } from "@/components/ui/button";
 import { logos, Skills } from "@/lib/utils";
 import Image from "next/image";
@@ -41,7 +42,9 @@ const page = () => {
           </div>
           <div className="grid grid-cols-3 grid-rows-2 gap-4">
             <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 text-white lg:p-16">
-              <span className="size-12 bg-white text-blue-700"></span>
+              <span className="size-12 bg-white text-blue-700 grid place-items-center rounded-xl">
+                <IconsSchoolCase />
+              </span>
               <h4 className="text-xl">
                 Employability and Career Development Opportunities
               </h4>
@@ -53,20 +56,24 @@ const page = () => {
                 succes..
               </p>
             </div>
-            
+
             <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 text-white lg:p-16">
-              <span className="size-12 bg-white text-blue-700"></span>
+              <span className="size-12 bg-white text-blue-700 grid place-items-center rounded-xl">
+                <IconsSchoolCase />
+              </span>
               <h4 className="text-xl">
                 Practical Application of Classroom Knowledge
               </h4>
               <p className="text-sm">
                 The Skills Challenges bridge the gap between theoretical
                 learning and practical application, reinforcing what students
-                learn in their academic courses. 
+                learn in their academic courses.
               </p>
             </div>
             <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 text-white  lg:p-16">
-              <span className="size-12 bg-white text-blue-700"></span>
+              <span className="size-12 bg-white text-blue-700 grid place-items-center rounded-xl">
+                <IconsSchoolCase />
+              </span>
               <h4 className="text-xl">Students & Trainees Engagement</h4>
               <p className="text-sm">
                 Embed and incorporate Skills Challenges into your courses to
@@ -77,64 +84,70 @@ const page = () => {
               </p>
             </div>
             <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:col-span-2 text-white lg:p-16">
-              <span className="size-12 bg-white text-blue-700"></span>
+              <span className="size-12 bg-white text-blue-700 grid place-items-center rounded-xl">
+                <IconsSchoolCase />
+              </span>
               <h4 className="text-xl">
-              Access to the Industry Experts & Mentors
+                Access to the Industry Experts & Mentors
               </h4>
               <p className="text-sm">
-              Skills Challenges expose students to industry experts and mentors who offer guidance, support, and insights on the trends of digital careers. This can help students gain a deep understanding of their chosen field. 
+                Skills Challenges expose students to industry experts and mentors who offer guidance, support, and insights on the trends of digital careers. This can help students gain a deep understanding of their chosen field.
               </p>
             </div>
             <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 text-white lg:p-16">
-              <span className="size-12 bg-white text-blue-700"></span>
+              <span className="size-12 bg-white text-blue-700 grid place-items-center rounded-xl">
+                <IconsSchoolCase />
+              </span>
               <h4 className="text-xl">
-              Skills Assessments
+                Skills Assessments
               </h4>
               <p className="text-sm">
-              Embed our projects based tests and skills assessments directly into your curriculum.
+                Embed our projects based tests and skills assessments directly into your curriculum.
               </p>
             </div>
           </div>
         </div>
         <div className="my-16">
-            <div className="flex flex-col items-center justify-center gap-4 text-center">
-                <h4 className="md:w-2/3">Join a few Educational Institutions using Skills Challenges by Umurava</h4>
-            </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-6 py-16 md:gap-4">
-                {
-                    logos.map((logo,index) => (
-                        <img key={index} src={logo} alt="logo" className="w-32 object-contain h-32" />
-                    ))
-                }
-            </div>
+          <div className="flex flex-col items-center justify-center gap-4 text-center">
+            <h4 className="md:w-2/3">Join a few Educational Institutions using Skills Challenges by Umurava</h4>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-6 py-16 md:gap-4">
+            {
+              logos.map((logo, index) => (
+                <img key={index} src={logo} alt="logo" className="w-32 object-contain h-32" />
+              ))
+            }
+          </div>
         </div>
         <div className="my-16">
-            <div className="w-full flex flex-col items-center justify-center gap-4 text-center">
-                <h4 className="md:w-2/3">How Skills Challenges Program can Be Integrated into your Learning Institution</h4>
+          <div className="w-full flex flex-col items-center justify-center gap-4 text-center">
+            <h4 className="md:w-2/3">How Skills Challenges Program can Be Integrated into your Learning Institution</h4>
+          </div>
+          <div className="grid grid-cols-1 gap-4 mt-16 md:grid-cols-2 md:gap-4">
+            <div className="flex flex-col gap-4 md:p-16">
+              {
+                Skills.map((item, i) => (
+                  <div key={i} className="flex flex-row gap-4">
+                    <span className="p-4 grid place-items-center bg-umurava text-white rounded-full">{i + 1}</span>
+                    <p>{item}</p>
+                  </div>
+                ))
+              }
             </div>
-            <div className="grid grid-cols-1 gap-4 mt-16 md:grid-cols-2 md:gap-4">
-                <div className="flex flex-col gap-4 md:p-16">
-                    {
-                        Skills.map((item,i) => (
-                            <div key={i} className="flex flex-row gap-4">
-                                <span className="p-4 grid place-items-center bg-umurava text-white rounded-full">{i+1}</span>
-                                <p>{item}</p>
-                            </div>
-                        ))
-                    }
-                </div>
-                <div className="relative">
-                    <Image src="/skill section banner 1.png" alt="Skills Challenges" className="w-full rounded-2xl" fill/>
-                </div>
+            <div className="relative">
+              <Image src="/skill section banner 1.png" alt="Skills Challenges" className="w-full rounded-2xl" fill />
             </div>
+          </div>
         </div>
-        <div className="my-16 bg-umurava min-h-96 p-8 text-white flex items-center justify-center flex-col gap-4 rounded-xl">
-            <div className="flex items-center justify-center text-center">
-            <h3 className="text-center md:w-1/2">Ready to transform your learning institution?</h3>
-            </div>
-            <Button size={"lg"} className="w-fit bg-white text-umurava hover:bg-umurava/80">
-                Let&apos;s Partner
-            </Button>
+        <div className="my-16 bg-umurava relative min-h-96 p-8 text-white overflow-clip flex items-center justify-center flex-col gap-4 rounded-xl">
+          <HalfRoundedWhite className="absolute rotate-90 opacity-40 size-80 -top-6 right-0" />
+          <HalfRoundedWhite className="absolute  opacity-40 -rotate-90 size-80 -bottom-20 left-0" />
+          <div className="flex items-center justify-center text-center">
+            <h2 className="text-center my-8 md:w-1/2">Ready to transform your learning institution?</h2>
+          </div>
+          <Button size={"lg"} className="w-fit bg-white text-umurava hover:bg-umurava/80">
+            Let&apos;s Partner
+          </Button>
         </div>
       </div>
     </>

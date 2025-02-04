@@ -10,23 +10,26 @@ import {
 import { TfiEmail } from "react-icons/tfi";
 import { ImLocation } from "react-icons/im";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer className="bg-umuravadark lg:px32 min-h-96 px-8 md:px-16">
       <div className="flex justify-between border-b-2 border-white/30 py-10">
-        <h2 className="text-3xl font-bold text-white">Logo</h2>
+        <div className="text-3xl size-16 relative font-bold text-white">
+          <Image src={"/CareerTicket_4x-removebg-preview 1.png"} alt="" fill />
+        </div>
         <div className="flex flex-row gap-4">
-          <Link href="" className="rounded-full bg-white p-2">
+          <Link href="" className="rounded-full grid place-items-center size-10 bg-white p-2">
             <FaFacebook className="text-umuravadark" size={24} />
           </Link>
-          <Link href="" className="rounded-full bg-white p-2">
+          <Link href="" className="rounded-full grid place-items-center size-10 bg-white p-2">
             <FaGooglePlusG className="text-umuravadark" size={24} />
           </Link>
-          <Link href="" className="rounded-full bg-white p-2">
+          <Link href="" className="rounded-full grid place-items-center size-10 bg-white p-2">
             <FaInstagram className="text-umuravadark" size={24} />
           </Link>
-          <Link href="" className="rounded-full bg-white p-2">
+          <Link href="" className="rounded-full grid place-items-center size-10 bg-white p-2">
             <FaLinkedinIn className="text-umuravadark" size={24} />
           </Link>
         </div>

@@ -1,10 +1,11 @@
+import { IconsSchoolCase } from "@/app/_components/icons/icons";
 import Image from "next/image";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <div className="min-h- grid min-h-[720px] grid-cols-1 px-8 py-8 md:grid-cols-2 md:gap-16 md:px-16">
+      <div className="min-h- grid min-h-fit grid-cols-1 px-8 py-8 md:grid-cols-2 md:gap-16 md:px-16">
         <div className="flex flex-col justify-center gap-4">
           <h2 className="font-black">Our Story</h2>
           <p className="mt-8">
@@ -20,7 +21,7 @@ const page = () => {
             job markets.
           </p>
         </div>
-        <div className="relative min-h-96  p-8">
+        <div className="relative min-h-fit  p-8">
           <video src="" className="h-96 object-cover"  autoPlay loop>
             <source src="/-9844-4599-a3ad-736e0dbdf70d.mp4" type="video/mp4" />
           </video>
@@ -32,7 +33,9 @@ const page = () => {
         </div>
         <div className="grid min-h-[720px] w-full gap-4 text-white md:mt-16 lg:grid-cols-2 lg:grid-rows-2 lg:px-32">
           <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 lg:col-span-2 lg:p-16">
-            <span className="size-12 bg-white text-blue-700"></span>
+            <span className="size-12 grid place-items-center rounded-xl bg-white text-blue-700">
+              <IconsSchoolCase/>
+            </span>
 
             <h4>Bridging the Experience Gap </h4>
             <p>
@@ -42,7 +45,9 @@ const page = () => {
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:p-16">
-            <span className="size-12 bg-white text-blue-700"></span>
+            <span className="size-12 grid place-items-center rounded-xl bg-white text-blue-700">
+              <IconsSchoolCase/>
+            </span>
             <h4>Bridging Education and Employment</h4>
             <p>
               Traditional education doesnt’ always prepare talents for the
@@ -51,7 +56,9 @@ const page = () => {
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:p-16">
-            <span className="size-12 bg-white text-blue-700"></span>
+            <span className="size-12 grid place-items-center rounded-xl bg-white text-blue-700">
+              <IconsSchoolCase/>
+            </span>
             <h4>Preparing Talents for Global Job Markets</h4>
             <p>
               We are ensuring that African talents shine globally and that’s why
