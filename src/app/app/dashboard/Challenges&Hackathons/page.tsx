@@ -6,19 +6,30 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import TaskCard from "@/app/_components/Home/TaskCard";
 import Link from "next/link";
 import { FilterIcon, Plus, Search } from "lucide-react";
-import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
+import Breadcrumbs from "@/app/_components/Dashboard/BreadcrumbsNav";
 import { Input } from "@/components/ui/input";
 import { usePathname } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
-import { fetchCompetitions } from "@/lib/redux/actionCreators/competitionAction";
+import {
+  fetchCompetitions,
+  fetchCompetitionsStats,
+} from "@/lib/redux/actionCreators/competitionAction";
+import { UserRoles } from "@/lib/redux/features/authReducer";
 
 const page = () => {
   const [activeTab, setActiveTab] = useState<
     "all" | "open" | "ongoing" | "completed"
   >("all");
-  const user = "admin";
 
   const dispatch = useAppDispatch();
+
+  const { user } = useAppSelector(
+    (state) => state.auth,
+  );
+  
+  const { loading: statsLoading, stats } = useAppSelector(
+    (state) => state.competitionsStats,
+  );
 
   const { loading, competitions } = useAppSelector(
     (state) => state.competitions,
@@ -27,6 +38,12 @@ const page = () => {
   useEffect(() => {
     if (!competitions.competitions.length) dispatch(fetchCompetitions());
   }, []);
+
+  useEffect(() => {
+    if (stats.all.competitions === 0) {
+      dispatch(fetchCompetitionsStats());
+    }
+  }, [stats]);
 
   return (
     <>
@@ -60,7 +77,7 @@ const page = () => {
               <span
                 className={`${activeTab === "completed" ? "bg-umurava text-white" : "bg-gray-300"} rounded-xl px-2 group-hover:bg-umurava group-hover:text-white`}
               >
-                0
+                {stats.all.completed}
               </span>
             </div>
             <div
@@ -72,7 +89,7 @@ const page = () => {
               <span
                 className={`${activeTab === "open" ? "bg-umurava text-white" : "bg-gray-300"} rounded-xl px-2 group-hover:bg-umurava group-hover:text-white`}
               >
-                0
+                {stats.all.open}
               </span>
             </div>
             <div
@@ -84,11 +101,12 @@ const page = () => {
               <span
                 className={`${activeTab === "ongoing" ? "bg-umurava text-white" : "bg-gray-300"} rounded-xl px-2 group-hover:bg-umurava group-hover:text-white`}
               >
-                0
+                {stats.all.ongoing}
               </span>
             </div>
           </div>
-          {user === "admin" && (
+          {(user?.role === UserRoles.ADMIN ||
+            user?.role === UserRoles.CLIENT) && (
             <Button className="rounded-lg bg-umurava py-7 text-white duration-300 hover:bg-umurava/80">
               <Link
                 href={"create-new-challenge"}
@@ -100,14 +118,27 @@ const page = () => {
             </Button>
           )}
         </div>
-        <div className="mt-6 flex min-h-screen flex-wrap gap-x-5 gap-y-4">
-          {competitions.competitions.map((competition) => (
-            <TaskCard
-              size={22}
-              competitionData={competition}
-              key={competition.id}
-            />
-          ))}
+        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-4">
+          {competitions.competitions.map((competition) => {
+            if (activeTab === "all") {
+              return (
+                <TaskCard
+                  size={22}
+                  competitionData={competition}
+                  key={competition.id}
+                />
+              );
+            }
+            if (competition.status === activeTab) {
+              return (
+                <TaskCard
+                  size={22}
+                  competitionData={competition}
+                  key={competition.id}
+                />
+              );
+            }
+          })}
         </div>
       </div>
     </>

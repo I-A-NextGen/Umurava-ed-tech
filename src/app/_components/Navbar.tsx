@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { navlinks } from "@/lib/utils";
+import { navlinks } from "@/lib/utils/utils";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

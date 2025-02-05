@@ -10,17 +10,10 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { toast } from "react-toastify";
 
 export const Upperbar = () => {
-  const { isAuthenticated, token } = useAppSelector((state) => state.auth);
+  // const { isAuthenticated, token } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!isAuthenticated && !token) {
-      dispatch(clearAuthUser());
-      toast.success("Logout successful.");
-      router.push("/app/auth/sign-in");
-    }
-  }, []);
 
   return (
     <div className="flex h-16 flex-row items-center justify-between px-8">

@@ -14,6 +14,9 @@ import { PulseLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
+  useEffect(() => {
+    toast.dismiss();
+  }, []);
   const {
     register,
     handleSubmit,
@@ -38,7 +41,7 @@ const Page = () => {
 
   useEffect(() => {
     if (isAuthenticated && user) {
-      router.push("/app/dashboard");
+      router.replace("/app/dashboard");
     }
   }, []);
 
@@ -46,8 +49,9 @@ const Page = () => {
     if (loginResponseData) {
       toast.success(loginResponseData.message);
       dispatch(setAuthUser(loginResponseData.data.token));
+      dispatch(resetLoginState());
       reset();
-      router.push("/app/dashboard");
+      router.replace("/app/dashboard");
     }
     if (loginResponseError) {
       toast.error(loginResponseError);

@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import { IStatsState } from "@/lib/redux/features/competition/statsReducer";
+import React, { useState } from "react";
 import { FaArrowUpLong, FaPeopleGroup } from "react-icons/fa6";
 import { IoMdDocument } from "react-icons/io";
 import { IoDocumentTextOutline } from "react-icons/io5";
@@ -39,17 +40,33 @@ export function Belowsection() {
   );
 }
 
-export function BelowsectionAdmin() {
+export function BelowsectionAdmin({ stats }: { stats: IStatsState["stats"] }) {
+  const [filter, setFilter] = useState({
+    competitions: "all",
+    participants: "all",
+    open: "all",
+    completed: "all",
+    ongoing: "all",
+  });
   return (
     <div className="grid grid-cols-6 grid-rows-4 gap-4">
       <div className="col-span-3 row-span-2 h-[9.3rem] rounded-lg border bg-white p-4">
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
-            <select className="text-sm text-gray-500">
-              <option>This day</option>
-              <option value="">This Week</option>
-              <option value="">This Month</option>
+            <select
+              className="text-sm text-gray-500"
+              onChange={(e) =>
+                setFilter((prevData) => ({
+                  ...prevData,
+                  competitions: e.target.value,
+                }))
+              }
+            >
+              <option value="all">All</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
             </select>
           </div>
           <div className="flex flex-row items-center">
@@ -59,7 +76,11 @@ export function BelowsectionAdmin() {
             <div className="flex flex-col items-start justify-center gap-1 p-4">
               <p className="text-sm text-gray-500">Total Challenge</p>
               <div className="flex flex-row items-center gap-2">
-                <h6>29,405</h6>
+                <h6>
+                  {stats[
+                    filter.competitions as "all" | "week" | "month" | "year"
+                  ].competitions || 0}
+                </h6>
                 <div className="flex flex-row items-center gap-1 rounded-xl bg-umurava/10 px-2 py-[2px]">
                   <FaArrowUpLong className="text-umurava" size={10} />
                   <span className="text-sm">15%</span>
@@ -73,10 +94,19 @@ export function BelowsectionAdmin() {
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
-            <select className="text-sm text-gray-500">
-              <option>This day</option>
-              <option value="">This Week</option>
-              <option value="">This Month</option>
+            <select
+              className="text-sm text-gray-500"
+              onChange={(e) =>
+                setFilter((prevData) => ({
+                  ...prevData,
+                  participants: e.target.value,
+                }))
+              }
+            >
+              <option value="all">All</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
             </select>
           </div>
           <div className="flex flex-row items-center">
@@ -86,7 +116,13 @@ export function BelowsectionAdmin() {
             <div className="flex flex-col items-start justify-center p-4">
               <p className="text-sm text-gray-500">Total Participants</p>
               <div className="flex flex-row items-center gap-2">
-                <h6>29,405</h6>
+                <h6>
+                  {
+                    stats[
+                      filter.participants as "all" | "week" | "month" | "year"
+                    ].participants
+                  }
+                </h6>
                 <div className="flex flex-row items-center gap-1 rounded-xl bg-umurava/10 px-2 py-[2px]">
                   <FaArrowUpLong className="text-umurava" size={10} />
                   <span className="text-sm">15%</span>
@@ -100,10 +136,19 @@ export function BelowsectionAdmin() {
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
-            <select className="text-sm text-gray-500">
-              <option>This day</option>
-              <option value="">This Week</option>
-              <option value="">This Month</option>
+            <select
+              className="text-sm text-gray-500"
+              onChange={(e) =>
+                setFilter((prevData) => ({
+                  ...prevData,
+                  completed: e.target.value,
+                }))
+              }
+            >
+              <option value="all">All</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
             </select>
           </div>
           <div className="flex flex-row items-center">
@@ -113,7 +158,12 @@ export function BelowsectionAdmin() {
             <div className="flex flex-col items-start justify-center p-4">
               <p className="text-sm text-gray-500">Completed Challenges</p>
               <div className="flex flex-row items-center gap-2">
-                <h6>5,837</h6>
+                <h6>
+                  {
+                    stats[filter.completed as "all" | "week" | "month" | "year"]
+                      .completed
+                  }
+                </h6>
                 <div className="flex flex-row items-center gap-1 rounded-xl bg-umurava/10 px-2 py-[2px]">
                   <FaArrowUpLong className="text-umurava" size={10} />
                   <span className="text-sm">15%</span>
@@ -127,10 +177,19 @@ export function BelowsectionAdmin() {
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
-            <select className="text-sm text-gray-500">
-              <option>This day</option>
-              <option value="">This Week</option>
-              <option value="">This Month</option>
+            <select
+              className="text-sm text-gray-500"
+              onChange={(e) =>
+                setFilter((prevData) => ({
+                  ...prevData,
+                  open: e.target.value,
+                }))
+              }
+            >
+              <option value="all">All</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
             </select>
           </div>
           <div className="flex flex-row items-center">
@@ -140,7 +199,9 @@ export function BelowsectionAdmin() {
             <div className="flex flex-col items-start justify-center p-4">
               <p className="text-sm text-gray-500">Open Challenges</p>
               <div className="flex flex-row items-center gap-2">
-                <h6>5,837</h6>
+                <h6>
+                  {stats[filter.open as "all" | "week" | "month" | "year"].open}
+                </h6>
                 <div className="flex flex-row items-center gap-1 rounded-xl bg-umurava/10 px-2 py-[2px]">
                   <FaArrowUpLong className="text-umurava" size={10} />
                   <span className="text-sm">15%</span>
@@ -154,10 +215,19 @@ export function BelowsectionAdmin() {
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
-            <select className="text-sm text-gray-500">
-              <option>This day</option>
-              <option value="">This Week</option>
-              <option value="">This Month</option>
+            <select
+              className="text-sm text-gray-500"
+              onChange={(e) =>
+                setFilter((prevData) => ({
+                  ...prevData,
+                  ongoing: e.target.value,
+                }))
+              }
+            >
+              <option value="all">All</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
             </select>
           </div>
           <div className="flex flex-row items-center">
@@ -167,7 +237,12 @@ export function BelowsectionAdmin() {
             <div className="flex flex-col items-start justify-center p-4">
               <p className="text-sm text-gray-500">Ongoing Challenges</p>
               <div className="flex flex-row items-center gap-2">
-                <h6>5,837</h6>
+                <h6>
+                  {
+                    stats[filter.ongoing as "all" | "week" | "month" | "year"]
+                      .ongoing
+                  }
+                </h6>
                 <div className="flex flex-row items-center gap-1 rounded-xl bg-umurava/10 px-2 py-[2px]">
                   <FaArrowUpLong className="text-umurava" size={10} />
                   <span className="text-sm">15%</span>

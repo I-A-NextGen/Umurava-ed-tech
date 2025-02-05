@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { AppSidebar } from "@/app/_components/Dashboard/Appsidebar";
 import TaskCard from "@/app/_components/Home/TaskCard";
 import React, { useEffect } from "react";
@@ -7,20 +7,32 @@ import {
   BelowsectionAdmin,
 } from "@/app/_components/Dashboard/DashboardSections";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
-import { fetchCompetitions } from "@/lib/redux/actionCreators/competitionAction";
+import {
+  fetchCompetitions,
+  fetchCompetitionsStats,
+} from "@/lib/redux/actionCreators/competitionAction";
+import { UserRoles } from "@/lib/redux/features/authReducer";
 
 const page = () => {
-  const user = "admin";
-
   const dispatch = useAppDispatch();
 
+  const { user, isAuthenticated } = useAppSelector((state) => state.auth);
   const { loading, competitions } = useAppSelector(
     (state) => state.competitions,
   );
 
+  const { loading: statsLoading, stats } = useAppSelector(
+    (state) => state.competitionsStats,
+  );
+
   useEffect(() => {
-    if (!competitions.competitions.length) dispatch(fetchCompetitions());
+    if (!competitions.competitions.length) {
+      dispatch(fetchCompetitions());
+    }
+
+    dispatch(fetchCompetitionsStats());
   }, []);
+  
 
   return (
     <>
@@ -30,7 +42,11 @@ const page = () => {
           Build Work Experience through Skills Challenges
         </p>
       </div>
-      {user === "admin" ? <BelowsectionAdmin /> : <Belowsection />}
+      {user?.role &&
+        [UserRoles.CLIENT, UserRoles.ADMIN].includes(user?.role) && (
+          <BelowsectionAdmin stats={stats} />
+        )}
+      {user?.role === UserRoles.TALENT && <Belowsection />}
       <div className="">
         <h5>Recent Challenges</h5>
         <div className="mt-6 flex min-h-screen flex-wrap gap-x-5 gap-y-4">
@@ -46,5 +62,4 @@ const page = () => {
     </>
   );
 };
-
 export default page;

@@ -30,6 +30,7 @@ import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/lib/redux/store";
 import { clearAuthUser } from "@/lib/redux/features/authReducer";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 interface LinkItem {
   label: string;
@@ -41,17 +42,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const path = usePathname();
   const dispatch = useAppDispatch();
   const router = useRouter();
-
-  let user = "user";
-
-  function Whichuser() {
-    let user = "user";
-    if (path.includes("/admin")) {
-      user = "admin";
-      return user;
-    }
-    return user;
-  }
 
   const isActive = (href: string) => {
     return path === href;
@@ -77,9 +67,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   ];
 
   const logoutHandler = () => {
+    toast.warning("Signing out... Please hold on.");
     dispatch(clearAuthUser());
-    router.push("/");
+    router.replace("/");
   };
+
 
   return (
     <Sidebar className="bg-umurava">
