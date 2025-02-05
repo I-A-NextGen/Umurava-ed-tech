@@ -51,7 +51,7 @@ export default function VideoSlider() {
   }, [])
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000) // Auto-slide every 5 seconds
+    const interval = setInterval(nextSlide, 5000)
     return () => clearInterval(interval)
   }, [nextSlide])
 

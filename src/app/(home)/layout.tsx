@@ -8,7 +8,7 @@ import Footer from "../_components/Footer";
 export const metadata: Metadata = {
   title: "umurava edtech",
   description: "umurava edtech",
-  icons: [{ rel: "icon", url: "/image1.png" }],
+  icons: [{ rel: "icon", url: "/Rectangle 1537.png" }],
 };
 
 export default function RootLayout({
