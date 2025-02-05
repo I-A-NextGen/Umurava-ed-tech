@@ -16,6 +16,10 @@ export const navlinks = [
 
 export const projects = [
   {
+    text: "Software Development",
+    link: "",
+  },
+  {
     text: "UX / UI Design",
     link: "",
   },
@@ -44,7 +48,7 @@ export const projects = [
     link: "",
   },
   {
-    text: "Al & Maching Learning",
+    text: "Al & Machine Learning",
     link: "",
   },
   {

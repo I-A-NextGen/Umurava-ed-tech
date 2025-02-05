@@ -1,11 +1,9 @@
+import ReduxProvider from "@/lib/redux/reduxProvider";
 import "@/styles/globals.css";
-import { GeistSans } from "geist/font/sans";
+import { ToastContainer } from "react-toastify";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Provider } from "react-redux";
-import { store } from "@/Redux/store";
-import Navbar from "./_components/Navbar";
-import Footer from "./_components/Footer";
+import TopLoader from "@/components/TopLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <>
+        <ReduxProvider>
+          <TopLoader />
+          <ToastContainer />
           {children}
-        </>
+        </ReduxProvider>
       </body>
     </html>
   );

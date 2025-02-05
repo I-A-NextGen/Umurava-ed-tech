@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/utils";
 import {
   DateFieldProps,
   DateField as DateFieldRac,
@@ -22,7 +22,9 @@ const DateField = <T extends DateValueRac>({
 }: DateFieldProps<T>) => {
   return (
     <DateFieldRac
-      className={composeRenderProps(className, (className) => cn("space-y-2", className))}
+      className={composeRenderProps(className, (className) =>
+        cn("space-y-2", className),
+      )}
       {...props}
     >
       {children}
@@ -37,7 +39,9 @@ const TimeField = <T extends TimeValueRac>({
 }: TimeFieldProps<T>) => {
   return (
     <TimeFieldRac
-      className={composeRenderProps(className, (className) => cn("space-y-2", className))}
+      className={composeRenderProps(className, (className) =>
+        cn("space-y-2", className),
+      )}
       {...props}
     >
       {children}
@@ -67,7 +71,11 @@ interface DateInputProps extends DateInputPropsRac {
   unstyled?: boolean;
 }
 
-const DateInput = ({ className, unstyled = false, ...props }: Omit<DateInputProps, "children">) => {
+const DateInput = ({
+  className,
+  unstyled = false,
+  ...props
+}: Omit<DateInputProps, "children">) => {
   return (
     <DateInputRac
       className={composeRenderProps(className, (className) =>
