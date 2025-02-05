@@ -27,6 +27,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useAppDispatch } from "@/lib/redux/store";
+import { clearAuthUser } from "@/lib/redux/features/authReducer";
+import { useRouter } from "next/navigation";
 
 interface LinkItem {
   label: string;
@@ -35,34 +38,37 @@ interface LinkItem {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const router = usePathname();
-  // console.log(router);
+  const path = usePathname();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   let user = "user";
 
-  function Whichuser(){
+  function Whichuser() {
     let user = "user";
-    if (router.includes("/admin")) {
+    if (path.includes("/admin")) {
       user = "admin";
-      return user
+      return user;
     }
-    return user
+    return user;
   }
 
   const isActive = (href: string) => {
-      if (router === "/app/dashboard") {
-        return router.replace("/app/dashboard", "/") === href;
-      }
-      else {
-        return router === href;
-      }
-      
+    return path === href;
   };
 
   const links: LinkItem[] = [
     { label: "Dashboard", href: "/app/dashboard", icon: <HomeIcon /> },
-    { label: "Challenges & Hackathons", href: `/app/dashboard/Hackathons`, icon: <File /> },
-    { label: "Community", href: `/app/dashboard/Community`, icon: <PersonStanding /> },
+    {
+      label: "Challenges & Hackathons",
+      href: `/app/dashboard/Challenges&Hackathons`,
+      icon: <File />,
+    },
+    {
+      label: "Community",
+      href: `/app/dashboard/Community`,
+      icon: <PersonStanding />,
+    },
   ];
   const footerlinks: LinkItem[] = [
     { label: "Settings", href: "/", icon: <Settings /> },
@@ -70,27 +76,30 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     { label: "Refer family & friends", href: "/", icon: <Gift /> },
   ];
 
-  
+  const logoutHandler = () => {
+    dispatch(clearAuthUser());
+    router.push("/");
+  };
 
   return (
     <Sidebar className="bg-umurava">
-      <SidebarHeader className="bg-umurava h-fit p-4">
+      <SidebarHeader className="h-fit bg-umurava p-4">
         <Image src={"/Rectangle 1537.png"} alt="logo" width={56} height={40} />
       </SidebarHeader>
       <SidebarContent className="bg-umurava px-2 pt-8">
         {links.map((link, index) => (
           <Link key={index} href={link.href} passHref>
             <SidebarMenuItem
-              className={`flex hover:bg-umuravawhite/40 hover:text-white duration-300  items-center p-2 ${
+              className={`flex items-center rounded-md p-2 duration-300 ${
                 isActive(link.href)
-                  ? "bg-umuravawhite rounded-xl text-umurava"
-                  : "text-white"
+                  ? "bg-umuravawhite text-umurava"
+                  : "text-white hover:bg-umuravawhite/40"
               }`}
             >
               <SidebarMenuButton className="size-fit" aria-label={link.label}>
                 {link.icon}
               </SidebarMenuButton>
-              <span className="ml-4">{link.label}</span>
+              <span className="ml-1">{link.label}</span>
             </SidebarMenuItem>
           </Link>
         ))}
@@ -102,14 +111,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuButton className="size-fit" aria-label={link.label}>
                   {link.icon}
                 </SidebarMenuButton>
-                <span className="ml-4">{link.label}</span>
+                <span className="ml-1">{link.label}</span>
               </SidebarMenuItem>
             </Link>
           ))}
           <>
             <>
               <SidebarGroupContent>
-                <div className="flex items-center mb-8 gap-4">
+                <div className="mb-8 flex items-center gap-4">
                   <div className="relative size-12 overflow-clip rounded-full border-2 border-white bg-white">
                     <Image
                       src={
@@ -124,8 +133,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <p className="text-sm text-white">Hilaire Sh</p>
                     <p className="text-sm text-white">hilaire@uidesign</p>
                   </div>
-                  <button className="ml-2 rounded-none p-0">
-                    <RxExit />
+                  <button
+                    className="ml-2 rounded-none p-0"
+                    title="Logout"
+                    onClick={logoutHandler}
+                  >
+                    <RxExit size={20} />
                   </button>
                 </div>
               </SidebarGroupContent>
@@ -136,5 +149,3 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     </Sidebar>
   );
 }
-
-
