@@ -7,13 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import TaskCard from "./TaskCard";
-import {
-  HalfRoundedWhite,
-  IconCertificate,
-  IconDiploma,
-  IconGrowth,
-  IconsSchoolCase,
-} from "../icons/icons";
+import { HalfRoundedWhite, HeroHalf, HeroHalfLeft, IconCertificate, IconDiploma, IconGrowth, IconsSchoolCase } from "../icons/icons";
 import Avatars from "../Avatars";
 import { ArrowRight } from "lucide-react";
 import Slider from "./Slider";
@@ -58,8 +52,8 @@ const HomeHero = () => {
 
   return (
     <>
-      <div className="grid min-h-[720px] grid-cols-1 lg:grid-cols-2">
-        <div className="absolute bottom-16 left-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 items-center rounded-full bg-white p-2 px-4">
+      <div className="grid min-h-[720px] relative grid-cols-1 lg:grid-cols-2">
+        <div className="absolute flex p-2 px-10 z-20 rounded-full bg-white items-center left-1/2 bottom-12 md:bottom-14 -translate-x-1/2 -translate-y-1/2">
           <Avatars />
           <span className="ml-4 text-sm font-semibold">
             20K+ <br />
@@ -81,8 +75,10 @@ const HomeHero = () => {
             </Link>
           </Button>
         </div>
-        <div className="grid gap-2 p-8 md:grid-cols-2 md:p-16">
-          <div className="relative size-full overflow-clip rounded-xl bg-blue-500 max-lg:h-96">
+        <div className="grid md:grid-cols-2 relative gap-2 p-8 md:p-16">
+        <img src="/reaction-illustration 1 (2).png" className="size-32 hidden md:block -top-2 z-20 absolute left-64 -translate-x-1/2" alt="" />
+
+          <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
             <HalfRoundedWhite />
             <img
               alt=""
@@ -90,13 +86,11 @@ const HomeHero = () => {
               className="absolute h-full w-full object-cover"
             />
           </div>
-          <div className="relative size-full overflow-clip rounded-xl bg-blue-500 max-lg:h-96">
-            <HalfRoundedWhite className="absolute -top-6 right-0 rotate-90" />
-            <img
-              alt=""
-              src="/Group 18311.png"
-              className="absolute h-full w-full object-cover"
-            />
+          <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
+            <HalfRoundedWhite className="absolute rotate-90 right-0 -top-6" />
+            <div />
+            <img alt="" src="/Group 18311.png" className="absolute h-full w-full object-cover" />
+
           </div>
         </div>
       </div>
@@ -149,7 +143,9 @@ const HomeHero = () => {
         </div>
       </div>
       <div className="p-8 md:px-16 lg:px-32">
-        <div className="grid w-full grid-cols-1 rounded-xl bg-blue-500 p-8 text-white md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full grid-cols-1 rounded-xl relative bg-blue-500 p-8 text-white md:grid-cols-2 lg:grid-cols-4">
+          <HeroHalf className="absolute right-0 top-0"/>
+          <HeroHalfLeft className="absolute left-0 bottom-0"/>
           <div className="flex flex-col gap-2 p-8">
             <h3>1</h3>
             <p>Year</p>
@@ -328,7 +324,9 @@ const HomeHero = () => {
         </div>
       </div>
       <div className="p-8 md:p-16">
-        <div className="grid grid-cols-1 gap-8 rounded-xl bg-umurava p-8 md:p-16 lg:grid-cols-2">
+        <div className="bg-umurava grid relative rounded-xl grid-cols-1 gap-8 p-8 md:p-16 lg:grid-cols-2">
+        <HeroHalf className="absolute right-0 top-0"/>
+        <HeroHalfLeft className="absolute left-0 bottom-0"/>
           <div className="relative min-h-96">
             <Image
               src={"/Rectangle 4386 1.png"}
