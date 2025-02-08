@@ -27,7 +27,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { useAppDispatch } from "@/lib/redux/store";
+import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
 import { clearAuthUser } from "@/lib/redux/features/authReducer";
 import { useRouter } from "next/navigation";
 
@@ -42,16 +42,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  let user = "user";
+  const { user } = useAppSelector(state => state.auth);
 
-  function Whichuser() {
-    let user = "user";
-    if (path.includes("/admin")) {
-      user = "admin";
-      return user;
-    }
-    return user;
-  }
 
   const isActive = (href: string) => {
     return path === href;
@@ -131,7 +123,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   </div>
                   <div className="">
                     <p className="text-sm text-white">Hilaire Sh</p>
-                    <p className="text-sm text-white">hilaire@uidesign</p>
+                    <p className="text-sm text-white">{user?.email}</p>
                   </div>
                   <button
                     className="ml-2 rounded-none p-0"
