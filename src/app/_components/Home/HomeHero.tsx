@@ -70,7 +70,7 @@ const HomeHero = () => {
             organizations.
           </p>
           <Button asChild className="w-fit bg-blue-700 px-16" size={"lg"}>
-            <Link href={"/"} className="text-xl">
+            <Link href={"/app/dashboard"} className="">
               Get started
             </Link>
           </Button>
@@ -88,7 +88,7 @@ const HomeHero = () => {
           </div>
           <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
             <HalfRoundedWhite className="absolute rotate-90 right-0 -top-6" />
-            <div />
+            <div className="absolute bottom-0 w-full z-20 min-h-48 bg-gradient-to-b from-transparent to-umurava"/>
             <img alt="" src="/Group 18311.png" className="absolute h-full w-full object-cover" />
 
           </div>
