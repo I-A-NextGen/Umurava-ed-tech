@@ -1,0 +1,117 @@
+"use client";
+import React, { CSSProperties, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import TaskCard from "@/app/_components/Home/TaskCard";
+import Link from "next/link";
+import { FilterIcon, Plus, Search } from "lucide-react";
+import Breadcrumbs from "@/app/_components/Dashboard/Breadcrumbs";
+import { Input } from "@/components/ui/input";
+import { usePathname } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
+import { fetchCompetitions } from "@/lib/redux/actionCreators/competitionAction";
+
+const page = () => {
+  const [activeTab, setActiveTab] = useState<
+    "all" | "open" | "ongoing" | "completed"
+  >("all");
+  const user = "admin";
+
+  const dispatch = useAppDispatch();
+
+  const { loading, competitions } = useAppSelector(
+    (state) => state.competitions,
+  );
+
+  useEffect(() => {
+    if (!competitions.competitions.length) dispatch(fetchCompetitions());
+  }, []);
+
+  return (
+    <>
+      <div>
+        <h4 className="text-2xl">Challenges</h4>
+        <p className="text-gray-500">
+          Join a challenge or a hackathon to gain valuable work experience,
+        </p>
+      </div>
+      <div>
+        <div className="flex items-center justify-between text-sm">
+          <div className="flex items-center gap-3 text-sm">
+            <div
+              onClick={() => setActiveTab("all")}
+              className={`${activeTab === "all" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-3 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
+            >
+              <IoDocumentTextOutline />
+              <span className="text-nowrap">All Challenge</span>
+              <span
+                className={`${activeTab === "all" ? "bg-umurava text-white" : "bg-gray-300"} rounded-xl px-2 group-hover:bg-umurava group-hover:text-white`}
+              >
+                {competitions.totalCompetitions}
+              </span>
+            </div>
+            <div
+              onClick={() => setActiveTab("completed")}
+              className={`${activeTab === "completed" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-3 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
+            >
+              <IoDocumentTextOutline />
+              <span className="text-nowrap">Completed Challenge</span>
+              <span
+                className={`${activeTab === "completed" ? "bg-umurava text-white" : "bg-gray-300"} rounded-xl px-2 group-hover:bg-umurava group-hover:text-white`}
+              >
+                0
+              </span>
+            </div>
+            <div
+              onClick={() => setActiveTab("open")}
+              className={`${activeTab === "open" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-3 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
+            >
+              <IoDocumentTextOutline />
+              <span className="text-nowrap">Open Challenge</span>
+              <span
+                className={`${activeTab === "open" ? "bg-umurava text-white" : "bg-gray-300"} rounded-xl px-2 group-hover:bg-umurava group-hover:text-white`}
+              >
+                0
+              </span>
+            </div>
+            <div
+              onClick={() => setActiveTab("ongoing")}
+              className={`${activeTab === "ongoing" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-3 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
+            >
+              <IoDocumentTextOutline />
+              <span className="text-nowrap">Ongoing Challenge</span>
+              <span
+                className={`${activeTab === "ongoing" ? "bg-umurava text-white" : "bg-gray-300"} rounded-xl px-2 group-hover:bg-umurava group-hover:text-white`}
+              >
+                0
+              </span>
+            </div>
+          </div>
+          {user === "admin" && (
+            <Button className="rounded-lg bg-umurava py-7 text-white duration-300 hover:bg-umurava/80">
+              <Link
+                href={"create-new-challenge"}
+                className="flex items-center justify-center gap-2"
+              >
+                <Plus />
+                <span className="">Create New Challenge</span>
+              </Link>
+            </Button>
+          )}
+        </div>
+        <div className="mt-6 flex min-h-screen flex-wrap gap-x-5 gap-y-4">
+          {competitions.competitions.map((competition) => (
+            <TaskCard
+              size={22}
+              competitionData={competition}
+              key={competition.id}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default page;
