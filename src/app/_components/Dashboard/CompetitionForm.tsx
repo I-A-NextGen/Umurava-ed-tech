@@ -281,9 +281,9 @@ const CompetitionForm = ({ mode }: { mode: "new" | "edit" }) => {
             <CreatableSelect
               isMulti
               options={[
-                { value: "junior", label: "Junior" },
-                { value: "intermediate", label: "Intermediate" },
-                { value: "senior", label: "Senior" },
+                { value: "HTML/CSS", label: "HTML/CSS" },
+                { value: "Typescript", label: "Typescript" },
+                { value: "Node js", label: "Node js" },
               ]}
               className={`${errors.skills ? "!border-red-600" : "!border-gray-300"} basic-multi-select w-full`}
               classNamePrefix="select"
