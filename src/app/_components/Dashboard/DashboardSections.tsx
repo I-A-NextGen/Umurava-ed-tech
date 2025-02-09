@@ -3,12 +3,11 @@
 import { IStatsState } from "@/lib/redux/features/competition/statsReducer";
 import React, { useState } from "react";
 import { FaArrowUpLong, FaPeopleGroup } from "react-icons/fa6";
-import { IoMdDocument } from "react-icons/io";
 import { IoDocumentTextOutline } from "react-icons/io5";
 
 export function Belowsection({ stats }: { stats: IStatsState["stats"] }) {
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
       <div className="flex flex-row items-center justify-between rounded-lg border bg-white px-4 py-6">
         <div className="border-l-4 border-umurava pl-2">
           <p className="text-sm text-slate-800 font-medium">Completed Challenges</p>
@@ -49,8 +48,8 @@ export function BelowsectionAdmin({ stats }: { stats: IStatsState["stats"] }) {
     ongoing: "all",
   });
   return (
-    <div className="grid grid-cols-6 grid-rows-4 gap-4">
-      <div className="col-span-3 row-span-2 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-6 lg:grid-rows-4 gap-4">
+      <div className="lg:col-span-3 lg:row-span-2 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
@@ -103,7 +102,7 @@ export function BelowsectionAdmin({ stats }: { stats: IStatsState["stats"] }) {
           </div>
         </div>
       </div>
-      <div className="col-span-3 col-start-4 row-span-2 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
+      <div className="lg:col-span-3 lg:col-start-4 lg:row-span-2 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
@@ -158,7 +157,7 @@ export function BelowsectionAdmin({ stats }: { stats: IStatsState["stats"] }) {
           </div>
         </div>
       </div>
-      <div className="col-span-2 row-span-2 row-start-3 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
+      <div className="lg:col-span-2 lg:row-span-2 lg:row-start-3 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
@@ -208,7 +207,7 @@ export function BelowsectionAdmin({ stats }: { stats: IStatsState["stats"] }) {
           </div>
         </div>
       </div>
-      <div className="col-span-2 col-start-3 row-span-2 row-start-3 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
+      <div className="lg:col-span-2 lg:col-start-3 lg:row-span-2 lg:row-start-3 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />
@@ -254,7 +253,7 @@ export function BelowsectionAdmin({ stats }: { stats: IStatsState["stats"] }) {
           </div>
         </div>
       </div>
-      <div className="col-span-2 col-start-5 row-span-2 row-start-3 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
+      <div className="lg:col-span-2 lg:col-start-5 lg:row-span-2 lg:row-start-3 h-[9.3rem] rounded-lg border bg-white py-6 px-4">
         <div className="flex size-full flex-col justify-center">
           <div className="flex w-full flex-row justify-between">
             <div className="flex-1" />

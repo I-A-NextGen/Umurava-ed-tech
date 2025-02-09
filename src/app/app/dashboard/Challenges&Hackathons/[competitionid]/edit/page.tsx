@@ -16,13 +16,9 @@ const page = () => {
               link: "/app/dashboard/Challenges&Hackathons",
             },
             {
-              label: "CompetitionForm.",
+              label: "Edit a challenge",
               link: "",
-            },
-            {
-              label: "Edit",
-              link: "",
-            },
+            }
           ]}
         />
         <div className="flex w-[42rem] flex-col items-center gap-6 rounded-xl border border-gray-300 bg-white p-4">

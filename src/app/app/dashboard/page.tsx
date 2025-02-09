@@ -12,13 +12,25 @@ import {
   fetchCompetitionsStats,
 } from "@/lib/redux/actionCreators/competitionAction";
 import { UserRoles } from "@/lib/redux/features/authReducer";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Eye } from "lucide-react";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Button } from "@/components/ui/button";
+import { fetchUserProfile } from "@/lib/redux/actionCreators/profileAction";
 
 const page = () => {
   const dispatch = useAppDispatch();
+
+    const { profile, loading: profileLoading } = useAppSelector((state) => state.profile);
+   
+  
+    useEffect(() => {
+      if (!profile) {
+        dispatch(fetchUserProfile());
+      }
+    }, [profile]);
+
 
   const { user, isAuthenticated } = useAppSelector((state) => state.auth);
   const { loading, competitions } = useAppSelector(
@@ -39,11 +51,17 @@ const page = () => {
 
   return (
     <>
-      <div className="">
-        <h4 className="text-2xl">Welcome back Hilaire,</h4>
+      <div className="flex justify-between">
+       <div className="">
+       <h4 className="text-2xl">Welcome back {profile?.lastName},</h4>
         <p className="text-gray-500">
           Build Work Experience through Skills Challenges
         </p>
+       </div>
+       <Button className="bg-umurava" size={"lg"}>
+        <Eye/>
+         View profile
+       </Button>
       </div>
       {statsLoading && (
         <div className="w-full gap-4">

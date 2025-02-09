@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/app/_components/Dashboard/Appsidebar";
 import { AuthWrapper } from "@/app/_components/Dashboard/AuthWrapper";
+import { CustomTrigger } from "@/app/_components/Dashboard/CustomTrigger";
 import { Upperbar } from "@/app/_components/Dashboard/Upperbar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import "@/styles/globals.css";

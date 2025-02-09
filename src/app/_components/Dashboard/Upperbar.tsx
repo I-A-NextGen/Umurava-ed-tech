@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { toast } from "react-toastify";
+import { CustomTrigger } from "./CustomTrigger";
 
 export const Upperbar = () => {
   // const { isAuthenticated, token } = useAppSelector((state) => state.auth);
@@ -18,6 +19,8 @@ export const Upperbar = () => {
   return (
     <div className="flex h-16 flex-row items-center justify-between px-8">
       <div className="flex w-[60%] flex-row gap-4">
+        
+                <CustomTrigger/>
         <label className="relative w-full">
           <Input
             type="text"

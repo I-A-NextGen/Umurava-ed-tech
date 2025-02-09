@@ -56,6 +56,7 @@ const authSlice = createSlice({
         );
         state.token = action.payload;
         state.isAuthenticated = !!action.payload;
+        state.user = getDecodedToken(action.payload);
       } else {
         localStorage.removeItem("authToken");
       }
