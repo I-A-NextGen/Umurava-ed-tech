@@ -8,8 +8,8 @@ import TopLoader from "@/components/TopLoader";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "umurava edtech",
-  description: "umurava edtech",
+  title: "Ed-Tech",
+  description: "Ed-Tech",
   icons: [{ rel: "icon", url: "/Rectangle 1537.png" }],
 };
 

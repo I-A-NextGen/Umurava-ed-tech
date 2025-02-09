@@ -16,6 +16,9 @@ import {
 } from "@/lib/redux/actionCreators/competitionAction";
 import { UserRoles } from "@/lib/redux/features/authReducer";
 
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 const page = () => {
   const [activeTab, setActiveTab] = useState<
     "all" | "open" | "ongoing" | "completed"
@@ -23,10 +26,8 @@ const page = () => {
 
   const dispatch = useAppDispatch();
 
-  const { user } = useAppSelector(
-    (state) => state.auth,
-  );
-  
+  const { user } = useAppSelector((state) => state.auth);
+
   const { loading: statsLoading, stats } = useAppSelector(
     (state) => state.competitionsStats,
   );
@@ -55,10 +56,10 @@ const page = () => {
       </div>
       <div>
         <div className="flex items-center justify-between text-sm">
-          <div className="flex items-center gap-3 text-sm">
+          <div className="flex items-center gap-2 text-sm">
             <div
               onClick={() => setActiveTab("all")}
-              className={`${activeTab === "all" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-3 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
+              className={`${activeTab === "all" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-2 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
             >
               <IoDocumentTextOutline />
               <span className="text-nowrap">All Challenge</span>
@@ -70,7 +71,7 @@ const page = () => {
             </div>
             <div
               onClick={() => setActiveTab("completed")}
-              className={`${activeTab === "completed" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-3 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
+              className={`${activeTab === "completed" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-2 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
             >
               <IoDocumentTextOutline />
               <span className="text-nowrap">Completed Challenge</span>
@@ -82,7 +83,7 @@ const page = () => {
             </div>
             <div
               onClick={() => setActiveTab("open")}
-              className={`${activeTab === "open" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-3 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
+              className={`${activeTab === "open" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-2 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
             >
               <IoDocumentTextOutline />
               <span className="text-nowrap">Open Challenge</span>
@@ -94,7 +95,7 @@ const page = () => {
             </div>
             <div
               onClick={() => setActiveTab("ongoing")}
-              className={`${activeTab === "ongoing" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-3 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
+              className={`${activeTab === "ongoing" ? "border-orange-200 bg-umurava/25" : "group border-gray-300 bg-gray-200/60"} flex cursor-pointer items-center gap-2 rounded border p-3 text-black duration-300 hover:border-orange-200 hover:bg-umurava/25`}
             >
               <IoDocumentTextOutline />
               <span className="text-nowrap">Ongoing Challenge</span>
@@ -118,27 +119,40 @@ const page = () => {
             </Button>
           )}
         </div>
-        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-4">
-          {competitions.competitions.map((competition) => {
-            if (activeTab === "all") {
-              return (
-                <TaskCard
-                  size={22}
-                  competitionData={competition}
-                  key={competition.id}
-                />
-              );
-            }
-            if (competition.status === activeTab) {
-              return (
-                <TaskCard
-                  size={22}
-                  competitionData={competition}
-                  key={competition.id}
-                />
-              );
-            }
-          })}
+        <div className="mt-6  text-center">
+          {!loading &&
+            Array.from({ length: 3 }, (_, i) => (
+              <Skeleton
+                baseColor="#e2e8f0"
+                highlightColor="#f1f5f9"
+                width="31%"
+                className={`${i !== 2 && "mr-[1.8%]"} mt-5 h-[22rem]`}
+                inline
+              />
+            ))}
+        </div>
+        <div className="mt-6 flex min-h-screen flex-wrap justify-center gap-x-6 gap-y-4">
+          {loading &&
+            competitions.competitions.map((competition) => {
+              if (activeTab === "all") {
+                return (
+                  <TaskCard
+                    size={20.5}
+                    competitionData={competition}
+                    key={competition.id}
+                  />
+                );
+              }
+              if (competition.status === activeTab) {
+                return (
+                  <TaskCard
+                    size={20.5}
+                    competitionData={competition}
+                    key={competition.id}
+                  />
+                );
+              }
+            })}
         </div>
       </div>
     </>

@@ -8,7 +8,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "umurava edtech Dashboard",
+  title: "Ed-Tech | Dashboard",
   description: "Dashboard",
   icons: [{ rel: "icon", url: "/Rectangle 1537.png" }],
 };

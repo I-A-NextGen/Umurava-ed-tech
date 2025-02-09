@@ -123,7 +123,9 @@ const page = () => {
       />
       <div className="mt-14 grid grid-cols-3 gap-5">
         <div className="col-span-2 flex flex-col gap-6 rounded-xl border border-umuravadark/10 bg-white p-5 py-7">
-          <div className="relative h-[25rem] rounded-xl bg-umurava" />
+          <div className="flex items-center justify-center relative h-[25rem] rounded-xl bg-umurava">
+            <img src={"/thumbnail.png"} alt="logo" />
+          </div>
           <div>
             <h5 className="mb-2">Project Brief: {competition.title}</h5>
             <p className="text-gray-600">{competition.brief}</p>

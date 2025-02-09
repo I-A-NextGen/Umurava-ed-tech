@@ -73,7 +73,7 @@ const Page = () => {
           </h5>
           <Link
             className="flex h-full w-full items-center justify-center bg-slate-50"
-            href={"/auth/sign-up"}
+            href={"/app/auth/sign-up"}
           >
             <h5>Create account</h5>
           </Link>
