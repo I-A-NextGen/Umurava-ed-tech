@@ -6,8 +6,8 @@ import Navbar from "../_components/Navbar";
 import Footer from "../_components/Footer";
 
 export const metadata: Metadata = {
-  title: "umurava edtech",
-  description: "umurava edtech",
+  title: "Ed-Tech",
+  description: "Ed-Tech",
   icons: [{ rel: "icon", url: "/Rectangle 1537.png" }],
 };
 
