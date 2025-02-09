@@ -16,7 +16,7 @@ const Navbar = () => {
           src={"/Umurava logo.png"}
           fill
           className="object-contain"
-          alt="Umurava logo.png"
+          alt="Umuravalogo.png"
         />
       </Link>
       <div className="lg:hidden">
