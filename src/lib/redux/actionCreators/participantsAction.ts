@@ -21,3 +21,27 @@ export const fetchCompetitionParticipants = createAsyncThunk(
     }
   },
 );
+
+export const applyCompetition = createAsyncThunk(
+  "app/apply/competition",
+  async (competitionId: string, { rejectWithValue, getState }) => {
+    try {
+      const state = getState() as RootState;
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/competitions/${competitionId}/apply`,{},
+        { headers: { Authorization: `Bearer ${state.auth.token}` } },
+      );
+      return response.data.message;
+    } catch (err) {
+      let error = err as AxiosError;
+      let errMessage;
+      if (error.status && error.status >= 500)
+        errMessage = "Something went wrong, please try again.";
+
+      return rejectWithValue({
+        message:
+          ((err as AxiosError).response?.data as any).message || errMessage,
+      });
+    }
+  },
+);

@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { navlinks } from "@/lib/utils";
+import { navlinks } from "@/lib/utils/utils";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +16,7 @@ const Navbar = () => {
           src={"/Umurava logo.png"}
           fill
           className="object-contain"
-          alt="Umurava logo.png"
+          alt="Umuravalogo.png"
         />
       </Link>
       <div className="lg:hidden">

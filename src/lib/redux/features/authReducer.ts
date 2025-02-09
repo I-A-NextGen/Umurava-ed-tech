@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { jwtDecode } from "jwt-decode";
+import { isBefore } from "date-fns";
 
 export enum UserRoles {
   ADMIN = "ADMIN",
@@ -24,7 +25,13 @@ const getAuthToken = () => {
 
 const getDecodedToken = (token: string | null) => {
   if (token) {
-    return jwtDecode(token as string) as unknown as AuthState["user"];
+    const decodedToken = jwtDecode(token as string);
+    const expirationTime = (decodedToken.exp || 1) * 1000;
+    if (expirationTime && expirationTime < Date.now()) {
+      localStorage.removeItem("authToken");
+      return;
+    }
+    return decodedToken as unknown as AuthState["user"];
   }
   return undefined;
 };
@@ -40,13 +47,11 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setAuthUser: (state, action: PayloadAction<AuthState["token"]>) => {
-      console.log(action.payload);
       if (action.payload) {
         localStorage.setItem(
           "authToken",
           JSON.stringify({
             token: action.payload,
-            expirationTime: jwtDecode(action.payload).exp,
           }),
         );
         state.token = action.payload;
@@ -59,7 +64,7 @@ const authSlice = createSlice({
       state.user = undefined;
       state.token = undefined;
       state.isAuthenticated = false;
-      localStorage.removeItem('authToken')
+      localStorage.removeItem("authToken");
     },
   },
 });

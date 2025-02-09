@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ICompetition } from "@/lib/redux/features/competition/competitionsReducer";
+import { formatDuration } from "@/lib/utils/formatDuration";
 import Link from "next/link";
 import React from "react";
 
@@ -12,7 +13,7 @@ const TaskCard = ({
 }) => {
   return (
     <div
-      className={`rounded-xl border border-umuravadark/20 capitalize`}
+      className={`rounded-xl border border-umuravadark/20 capitalize h-fit`}
       style={{
         width: `${size}rem`,
       }}
@@ -21,8 +22,10 @@ const TaskCard = ({
         <span className="absolute right-8 top-8 rounded-2xl bg-green-600 p-2 px-4 text-sm text-white md:px-6">
           {competitionData.status}
         </span>
-        <div className="min-h-56 w-full rounded-xl bg-umurava"></div>
-        <h6 className="leading-5 h-7">{competitionData.title}</h6>
+        <div className="flex items-center justify-center  min-h-56 w-full rounded-xl bg-umurava">
+          <img src={"/thumbnail.png"} alt="logo" />
+        </div>
+        <h6 className="h-7 leading-5">{competitionData.title}</h6>
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
             <span className="text-[.9rem] font-medium text-umuaravablack">
@@ -49,7 +52,9 @@ const TaskCard = ({
           </div>
           <div className="text-[.9rem]">
             <span className="font-medium text-umuaravablack">Timeline: </span>
-            <span className="text-gray-500"> Days</span>
+            <span className="text-gray-500">
+              {formatDuration(competitionData.duration)}
+            </span>
           </div>
         </div>
       </div>

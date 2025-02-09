@@ -29,6 +29,30 @@ export type NewCompetitionData = {
   };
 };
 
+const getSanitizedData = (data: NewCompetitionData) => {
+  const duration = data.durationValue + data.durationUnit;
+  const tempSkills = data.skills.map((skill) => skill.value);
+  const tempLevels = data.seniorityLevel.map((level) => level.value);
+  const tempCategory = data.category.value;
+
+  const {
+    skills,
+    category,
+    seniorityLevel,
+    durationUnit,
+    durationValue,
+    ...sanitizedData
+  } = data;
+
+  return {
+    ...sanitizedData,
+    duration,
+    skills: tempSkills,
+    seniorityLevel: tempLevels,
+    category: tempCategory,
+  };
+};
+
 export const createCompetition = createAsyncThunk(
   "app/create/competition",
   async (
@@ -37,36 +61,15 @@ export const createCompetition = createAsyncThunk(
   ) => {
     try {
       const state = getState() as RootState;
-      const duration =
-        competitionData.durationValue + competitionData.durationUnit;
-      const tempSkills = competitionData.skills.map((skill) => skill.value);
-      const tempLevels = competitionData.seniorityLevel.map(
-        (level) => level.value,
-      );
-      const tempCategory = competitionData.category.value;
-
-      const {
-        skills,
-        category,
-        seniorityLevel,
-        durationUnit,
-        durationValue,
-        ...sanitizedData
-      } = competitionData;
-      console.log(sanitizedData, state);
 
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/competitions`,
         {
-          ...sanitizedData,
-          duration,
-          skills: tempSkills,
-          seniorityLevel: tempLevels,
-          category: tempCategory,
+          ...getSanitizedData(competitionData),
         },
         { headers: { Authorization: `Bearer ${state.auth.token}` } },
       );
-      return response.data.data;
+      return response.data;
     } catch (err) {
       const error = err as AxiosError;
       let errMessage = "Something went wrong, please try again.";
@@ -83,7 +86,7 @@ export const fetchCompetitions = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/competitions`,
+        `${process.env.NEXT_PUBLIC_API_URL}/competitions?limit=3000`,
       );
       return response.data.data;
     } catch (err) {
@@ -101,11 +104,81 @@ export const fetchSingleCompetition = createAsyncThunk(
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/competitions/${competitionId}`,
       );
-      return response.data.data.competition
+      return response.data.data.competition;
     } catch (err) {
       let errMessage = "Something went wrong, please try again.";
 
       return rejectWithValue({ message: errMessage });
+    }
+  },
+);
+
+export const updateCompetition = createAsyncThunk(
+  "app/update/competition",
+  async (
+    competitionData: { id: string; data: NewCompetitionData },
+    { rejectWithValue, getState },
+  ) => {
+    try {
+      const state = getState() as RootState;
+      const response = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/competitions/${competitionData.id}`,
+        { ...getSanitizedData(competitionData.data) },
+        { headers: { Authorization: `Bearer ${state.auth.token}` } },
+      );
+      return response.data;
+    } catch (err) {
+      let errMessage = "Something went wrong, please try again.";
+
+      return rejectWithValue({ message: errMessage });
+    }
+  },
+);
+
+export const deleteCompetition = createAsyncThunk(
+  "app/delete/competition",
+  async (competitionId: string, { rejectWithValue, getState }) => {
+    try {
+      const state = getState() as RootState;
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_URL}/competitions/${competitionId}`,
+        { headers: { Authorization: `Bearer ${state.auth.token}` } },
+      );
+      return response.data;
+    } catch (err) {
+      let error = err as AxiosError;
+      let errMessage;
+      if (error.status && error.status >= 500)
+        errMessage = "Something went wrong, please try again.";
+
+      return rejectWithValue({
+        message:
+          ((err as AxiosError).response?.data as any).message || errMessage,
+      });
+    }
+  },
+);
+
+export const fetchCompetitionsStats = createAsyncThunk(
+  "app/competition/stats",
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const state = getState() as RootState;
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/competitions/stats`,
+        { headers: { Authorization: `Bearer ${state.auth.token}` } },
+      );
+      return response.data.data;
+    } catch (err) {
+      let error = err as AxiosError;
+      let errMessage;
+      if (error.status && error.status >= 500)
+        errMessage = "Something went wrong, please try again.";
+
+      return rejectWithValue({
+        message:
+          ((err as AxiosError).response?.data as any).message || errMessage,
+      });
     }
   },
 );

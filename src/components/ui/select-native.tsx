@@ -1,8 +1,9 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/utils";
 import { ChevronDown } from "lucide-react";
 import * as React from "react";
 
-export interface SelectPropsNative extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectPropsNative
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
   children: React.ReactNode;
 }
 

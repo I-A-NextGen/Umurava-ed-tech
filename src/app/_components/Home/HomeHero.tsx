@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Challenge, projects } from "@/lib/utils";
+import { Challenge, projects } from "@/lib/utils/utils";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";

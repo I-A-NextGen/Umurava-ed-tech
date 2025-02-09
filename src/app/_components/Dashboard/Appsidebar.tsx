@@ -20,6 +20,7 @@ import {
   Gift,
   Headphones,
   HomeIcon,
+  LucideUserRound,
   PersonStanding,
   Settings,
 } from "lucide-react";
@@ -27,9 +28,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { useAppDispatch } from "@/lib/redux/store";
+import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
 import { clearAuthUser } from "@/lib/redux/features/authReducer";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { fetchUserProfile } from "@/lib/redux/actionCreators/profileAction";
+import { useEffect } from "react";
 
 interface LinkItem {
   label: string;
@@ -42,16 +46,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  let user = "user";
+  const { profile, loading: profileLoading } = useAppSelector((state) => state.profile);
+  const { user } = useAppSelector((state) => state.auth);
 
-  function Whichuser() {
-    let user = "user";
-    if (path.includes("/admin")) {
-      user = "admin";
-      return user;
+  useEffect(() => {
+    if (!profile) {
+      dispatch(fetchUserProfile());
     }
-    return user;
-  }
+  }, [profile]);
 
   const isActive = (href: string) => {
     return path === href;
@@ -77,8 +79,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   ];
 
   const logoutHandler = () => {
+    toast.warning("Signing out... Please hold on.");
     dispatch(clearAuthUser());
-    router.push("/");
+    router.replace("/");
   };
 
   return (
@@ -116,33 +119,28 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </Link>
           ))}
           <>
-            <>
-              <SidebarGroupContent>
-                <div className="mb-8 flex items-center gap-4">
-                  <div className="relative size-12 overflow-clip rounded-full border-2 border-white bg-white">
-                    <Image
-                      src={
-                        "https://i.pinimg.com/736x/e8/e6/41/e8e64141f4c0ae39c32f9701ccea9a2e.jpg"
-                      }
-                      alt=""
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="">
-                    <p className="text-sm text-white">Hilaire Sh</p>
-                    <p className="text-sm text-white">hilaire@uidesign</p>
-                  </div>
-                  <button
-                    className="ml-2 rounded-none p-0"
-                    title="Logout"
-                    onClick={logoutHandler}
-                  >
-                    <RxExit size={20} />
-                  </button>
+            <SidebarGroupContent>
+              <div className="mb-8 ml-4 mt-6 flex items-center gap-2">
+                <div className="flex size-12 items-center justify-center rounded-full bg-slate-200/70">
+                  <LucideUserRound size={25} className="font-bold text-black" />
                 </div>
-              </SidebarGroupContent>
-            </>
+                <div className="">
+                  <p className="text-sm text-white capitalize">
+                    {profile?.fullName || ""}
+                  </p>
+                  <p className="text-sm text-white" title={user?.email}>
+                    {user?.email.slice(0, 14)}...
+                  </p>
+                </div>
+                <button
+                  className="ml-2 rounded-none p-0"
+                  title="Logout"
+                  onClick={logoutHandler}
+                >
+                  <RxExit size={20} />
+                </button>
+              </div>
+            </SidebarGroupContent>
           </>
         </SidebarFooter>
       </SidebarContent>
