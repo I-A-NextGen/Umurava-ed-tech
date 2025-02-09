@@ -120,7 +120,7 @@ const page = () => {
           )}
         </div>
         <div className="mt-6  text-center">
-          {!loading &&
+          {loading &&
             Array.from({ length: 3 }, (_, i) => (
               <Skeleton
                 baseColor="#e2e8f0"
@@ -132,7 +132,7 @@ const page = () => {
             ))}
         </div>
         <div className="mt-6 flex min-h-screen flex-wrap justify-center gap-x-6 gap-y-4">
-          {loading &&
+          {!loading &&
             competitions.competitions.map((competition) => {
               if (activeTab === "all") {
                 return (
