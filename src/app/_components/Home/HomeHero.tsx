@@ -52,45 +52,57 @@ const HomeHero = () => {
 
   return (
     <>
-      <div className="grid min-h-[720px] relative grid-cols-1 lg:grid-cols-2">
-        <div className="absolute flex p-2 px-10 z-20 rounded-full bg-white items-center left-1/2 bottom-12 md:bottom-14 -translate-x-1/2 -translate-y-1/2">
-          <Avatars />
-          <span className="ml-4 text-sm font-semibold">
-            20K+ <br />
-            Talents
-          </span>
-        </div>
-        <div className="ic flex flex-col justify-center gap-4 px-8 md:px-16">
-          <h1 className="text-5xl text-blue-700">
+      <div className="relative grid min-h-[720px] grid-cols-1 gap-5 px-8 lg:grid-cols-2">
+        <div className="flex flex-col justify-center gap-4 px-8 md:px-16 my-20">
+          <h1 className="text-[2.7rem] text-umurava">
             Build Work Experience through Skills Challenges Program
           </h1>
-          <p className="my-8">
+          <p className="my-4 text-justify">
             Enhance your Employability and Accelerate your Career Growth by
             working on Hands-on projects & hackathons from various businesses &
             organizations.
           </p>
-          <Button asChild className="w-fit bg-blue-700 px-16" size={"lg"}>
+          <Button
+            asChild
+            className="mt-5 w-fit bg-umurava px-16 py-7"
+            size={"lg"}
+          >
             <Link href={"/app/dashboard"} className="">
               Get started
             </Link>
           </Button>
         </div>
-        <div className="grid md:grid-cols-2 relative gap-2 p-8 md:p-16">
-        <img src="/reaction-illustration 1 (2).png" className="size-32 hidden md:block -top-2 z-20 absolute left-64 -translate-x-1/2" alt="" />
-
-          <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
-            <HalfRoundedWhite />
+        <div className="mx-4 sm:mx-16 lg:mx-0 grid place-items-center gap-5 px- md:grid-cols-2">
+          <div className="relative size-full h-[30rem] lg:h-[80%]">
+            <img
+              src="/reaction-illustration 1 (2).png"
+              className="absolute -top-14 left-44 z-20 hidden size-32 -translate-x-1/2 md:block"
+              alt=""
+            />
+            <div className="absolute bottom-0 left-10 md:left-3 z-20 flex -translate-x-1/2 -translate-y-1/2 items-center rounded-full bg-white p-2 px-10">
+              <Avatars />
+              <span className="ml-4 text-sm font-semibold">
+                20K+ <br />
+                Talents
+              </span>
+            </div>
+            <div className="relative size-full overflow-clip rounded-3xl bg-blue-500">
+              <HalfRoundedWhite />
+              <img
+                alt=""
+                src="/joyful-group-classmates 1.png"
+                className="absolute -bottom-[3.5rem] h-full w-full object-contain"
+              />
+            </div>
+          </div>
+          <div className="relative size-full h-[30rem] overflow-clip rounded-3xl bg-blue-500 lg:h-[80%]">
+            <HalfRoundedWhite className="absolute -top-6 right-0 rotate-90" />
+            <div className="absolute bottom-0 z-20 min-h-48 w-full bg-gradient-to-b from-transparent to-umurava" />
             <img
               alt=""
-              src="/joyful-group-classmates 1.png"
+              src="/Group 18311.png"
               className="absolute h-full w-full object-cover"
             />
-          </div>
-          <div className="relative size-full max-lg:h-96 overflow-clip rounded-xl bg-blue-500">
-            <HalfRoundedWhite className="absolute rotate-90 right-0 -top-6" />
-            <div className="absolute bottom-0 w-full z-20 min-h-48 bg-gradient-to-b from-transparent to-umurava"/>
-            <img alt="" src="/Group 18311.png" className="absolute h-full w-full object-cover" />
-
           </div>
         </div>
       </div>
@@ -106,7 +118,7 @@ const HomeHero = () => {
         </div>
         <div className="grid min-h-[720px] w-full gap-4 text-white md:mt-16 lg:grid-cols-2 lg:grid-rows-2 lg:px-32">
           <div className="row-span-1 flex flex-col gap-4 rounded-xl bg-blue-500 p-8 lg:col-span-2 lg:p-16">
-            <span className="grid size-12 place-items-center rounded-xl bg-white text-blue-700">
+            <span className="grid size-12 place-items-center rounded-xl bg-white text-umurava">
               <IconsSchoolCase />
             </span>
 
@@ -120,7 +132,7 @@ const HomeHero = () => {
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:p-16">
-            <span className="grid size-12 place-items-center rounded-xl bg-white text-blue-700">
+            <span className="grid size-12 place-items-center rounded-xl bg-white text-umurava">
               <IconsSchoolCase />
             </span>
             <h4>Enhance Your Employment Path</h4>
@@ -130,7 +142,7 @@ const HomeHero = () => {
             </p>
           </div>
           <div className="flex flex-col gap-4 rounded-xl bg-blue-500 p-8 md:p-16">
-            <span className="grid size-12 place-items-center rounded-xl bg-white text-blue-700">
+            <span className="grid size-12 place-items-center rounded-xl bg-white text-umurava">
               <IconsSchoolCase />
             </span>
             <h4>Earn Recognition and Prizes</h4>
@@ -143,9 +155,9 @@ const HomeHero = () => {
         </div>
       </div>
       <div className="p-8 md:px-16 lg:px-32">
-        <div className="grid w-full grid-cols-1 rounded-xl relative bg-blue-500 p-8 text-white md:grid-cols-2 lg:grid-cols-4">
-          <HeroHalf className="absolute right-0 top-0"/>
-          <HeroHalfLeft className="absolute left-0 bottom-0"/>
+        <div className="relative grid w-full grid-cols-1 rounded-xl bg-blue-500 p-8 text-white md:grid-cols-2 lg:grid-cols-4">
+          <HeroHalf className="absolute right-0 top-0" />
+          <HeroHalfLeft className="absolute bottom-0 left-0" />
           <div className="flex flex-col gap-2 p-8">
             <h3>1</h3>
             <p>Year</p>
@@ -324,9 +336,9 @@ const HomeHero = () => {
         </div>
       </div>
       <div className="p-8 md:p-16">
-        <div className="bg-umurava grid relative rounded-xl grid-cols-1 gap-8 p-8 md:p-16 lg:grid-cols-2">
-        <HeroHalf className="absolute right-0 top-0"/>
-        <HeroHalfLeft className="absolute left-0 bottom-0"/>
+        <div className="relative grid grid-cols-1 gap-8 rounded-xl bg-umurava p-8 md:p-16 lg:grid-cols-2">
+          <HeroHalf className="absolute right-0 top-0" />
+          <HeroHalfLeft className="absolute bottom-0 left-0" />
           <div className="relative min-h-96">
             <Image
               src={"/Rectangle 4386 1.png"}
