@@ -87,7 +87,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar className="bg-umurava">
       <SidebarHeader className="h-fit bg-umurava p-4">
+        <Link href={"/"}>
         <Image src={"/Rectangle 1537.png"} alt="logo" width={56} height={40} />
+        </Link>
       </SidebarHeader>
       <SidebarContent className="bg-umurava px-2 pt-8">
         {links.map((link, index) => (

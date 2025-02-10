@@ -209,7 +209,7 @@ const HomeHero = () => {
             professionals.
           </p>
         </div>
-        <div className="flex justify-center gap-4 px-8 md:grid-cols-2 md:px-16 lg:grid-cols-4">
+        <div className="flex max-md:flex-col justify-center gap-4 px-8 md:grid-cols-2 md:px-16 lg:grid-cols-4">
           {competitions.competitions.slice(0, 3).map((competition) => (
             <TaskCard
               size={22}
