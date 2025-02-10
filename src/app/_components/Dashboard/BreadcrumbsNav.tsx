@@ -12,7 +12,7 @@ const BreadcrumbsNav = ({
     .join(" /, ")
     .split(",");
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex max-md:flex-col max-md:items-start items-center gap-2">
       {linkLabels.map((label, index) => (
         <Link
           key={index}
