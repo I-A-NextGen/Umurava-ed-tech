@@ -19,7 +19,9 @@ const initialState: IApplicationState = {
 const applicationSlice = createSlice({
   name: "Application",
   initialState,
-  reducers: {},
+  reducers: {
+    resetApplicationState: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(applyCompetition.pending, (state) => {
@@ -43,4 +45,5 @@ const applicationSlice = createSlice({
   },
 });
 
+export const { resetApplicationState } = applicationSlice.actions;
 export default applicationSlice.reducer;

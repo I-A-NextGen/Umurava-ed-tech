@@ -25,6 +25,7 @@ const Page = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
     reset,
   } = useForm<RegisterData>();
@@ -36,6 +37,8 @@ const Page = () => {
   const onSubmit: SubmitHandler<RegisterData> = (data: RegisterData) => {
     dispatch(registerUser(data));
   };
+
+  const password = watch("password");
 
   const {
     registerData: registerResponseData,
@@ -178,7 +181,10 @@ const Page = () => {
                 className={`${errors.confirmPassword ? "border-red-600 outline-none" : "border-black/70 focus:outline focus:outline-black"} focus:rounded-0 w-full rounded-s border border-black/70 p-3`}
                 placeholder="Please confirm your Password"
                 type={isCPasswordVisible ? "text" : "password"}
-                {...register("confirmPassword", { required: true })}
+                {...register("confirmPassword", {
+                  required: true,
+                  validate: (value) => value === password,
+                })}
               />
 
               <button

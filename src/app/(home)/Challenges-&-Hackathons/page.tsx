@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { fetchCompetitions } from "@/lib/redux/actionCreators/competitionAction";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -25,16 +26,18 @@ const Page = () => {
       <div className="min-h-fit px-8 md:px-16">
         <div className="mt-16" />
         <div className="flex items-center pb-8">
-          <Button className="" variant={"ghost"}>
-            <ArrowLeft />
-          </Button>
+          <Link href="/" className="flex items-center gap-2">
+            <Button className="border rounded-md p-3 size-6" variant={"ghost"}>
+              <ArrowLeft />
+            </Button>
+            <p>Go back</p>
+          </Link>
           <p>
-            Go back{" "}
             <span className="ml-4 text-umurava">{path.replace("/", " ")}</span>
           </p>
         </div>
       </div>
-      <div className="flex min-h-screen flex-wrap gap-4 px-8 pb-32 md:grid-cols-2 md:px-16 lg:grid-cols-4">
+      <div className="flex justify-center min-h-screen flex-wrap gap-4 px-8 pb-32 md:grid-cols-2 md:px-16 lg:grid-cols-4">
         {competitions.competitions.map((competition) => (
           <TaskCard
             size={19}

@@ -20,6 +20,8 @@ import { formatDuration } from "@/lib/utils/formatDuration";
 import { toast } from "react-toastify";
 import TopNavbar from "@/app/_components/Dashboard/TopNavbar";
 import { isValid } from "date-fns";
+import { resetApplicationState } from "@/lib/redux/features/competition/applicationReducer";
+import { LucideUserRound } from "lucide-react";
 
 const page = () => {
   const { competitionid } = useParams();
@@ -52,14 +54,13 @@ const page = () => {
     dispatch(resetCompetitionState());
     dispatch(resetParticipantsState());
 
-    if (!competition) {
-      dispatch(fetchSingleCompetition(competitionid as string));
-    }
+    dispatch(fetchSingleCompetition(competitionid as string));
   }, []);
 
   useEffect(() => {
     if (applicationMessage) {
       toast.success(applicationMessage);
+      dispatch(resetApplicationState());
     }
     if (applicationError) {
       toast.error(applicationError as string);
@@ -98,10 +99,10 @@ const page = () => {
     }
   }, [competition]);
 
-  if (!competition ) {
+  if (!competition) {
     return (
       <div className="grid size-full min-h-screen place-items-center text-3xl font-bold text-umurava">
-        {!loading ?  <p>Competetion not Found</p> : <p>Loading ...</p>}
+        {!loading ? <p>Competetion not Found</p> : <p>Loading ...</p>}
       </div>
     );
   }
@@ -121,9 +122,9 @@ const page = () => {
           },
         ]}
       />
-      <div className="mt-14 grid grid-cols-3 gap-5">
-        <div className="col-span-2 flex flex-col gap-6 rounded-xl border border-umuravadark/10 bg-white p-5 py-7">
-          <div className="flex items-center justify-center relative h-[25rem] rounded-xl bg-umurava">
+      <div className="mt-14 grid grid-cols-3 grid-rows-2 gap-5">
+        <div className="col-span-3 flex flex-col gap-6 rounded-xl border border-umuravadark/10 bg-white p-5 py-7 xl:col-span-2 ">
+          <div className="relative flex h-[25rem] items-center justify-center rounded-xl bg-umurava">
             <img src={"/thumbnail.png"} alt="logo" />
           </div>
           <div>
@@ -148,8 +149,8 @@ const page = () => {
             <p className="prose-lg p-2">{Notes}</p>
           </div> */}
         </div>
-        <div className="flex flex-col gap-y-5">
-          <div className="flex min-h-fit flex-col gap-5 rounded-xl border border-umuravadark/10 bg-white p-5">
+        <div className="w-full h-fit col-span-3 xl:col-span-1 flex flex-col lg:flex-row xl:flex-col gap-5 row-start-auto">
+          <div className="w-full flex min-h-fit flex-col gap-5 rounded-xl border border-umuravadark/10 bg-white p-5">
             <div>
               <h6 className="font-semibold">Key Instructions:</h6>
               <p className="mt-2 leading-5 tracking-tight text-gray-500">
@@ -199,7 +200,7 @@ const page = () => {
           {((user?.role == UserRoles.CLIENT &&
             competition.creator === user?.sub) ||
             user?.role == UserRoles.ADMIN) && (
-            <div className="flex min-h-[18rem] flex-col rounded-xl border border-umuravadark/10 bg-white py-2">
+            <div className="w-full flex min-h-[18rem] flex-col rounded-xl border border-umuravadark/10 bg-white py-2">
               <div className="flex items-center gap-2 px-5 py-3">
                 <span className="text-lg font-semibold">Participants</span>
                 <span className="h-5 rounded-xl bg-umurava px-2 py-[2px] text-xs text-white">
@@ -218,11 +219,9 @@ const page = () => {
                           <div className="absolute bottom-0 right-0 z-20 size-3 rounded-full bg-green-500" />
                         )}
 
-                        <img
-                          src="https://i.pinimg.com/736x/2f/57/8d/2f578d07945132849b05fbdaf78cba38.jpg"
-                          alt="avatar"
-                          className="size-10 rounded-full bg-slate-300 object-contain"
-                        />
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200/70">
+                          <LucideUserRound size={20} className="font-bold" />
+                        </div>
                       </div>
                       <div className="flex flex-col justify-center capitalize">
                         <span className="text-[.99rem] font-medium leading-5">
