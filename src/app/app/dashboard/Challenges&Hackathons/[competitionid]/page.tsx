@@ -101,7 +101,7 @@ const page = () => {
   if (!competition ) {
     return (
       <div className="grid size-full min-h-screen place-items-center text-3xl font-bold text-umurava">
-        {!loading ?  <p>Competetion not Found</p> : <p>Loading ...</p>}
+        {!loading ?  <p>Competetion not Found</p> : <p>Loading...</p>}
       </div>
     );
   }
