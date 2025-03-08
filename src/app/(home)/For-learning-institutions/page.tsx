@@ -10,11 +10,11 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <div className="min-h-fit px-8 md:px-16">
+      <div className="min-h-fit px-8 md:px-16 lg:px-32">
         <div className="mt-16" />
         <div className="min-h-fit">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col justify-center w-4/5 gap-4">
               <h4 className="text-umurava">
                 Accelerate Your Students and Traineess Employability and Career
                 Growth through Project-based Learning Solution
@@ -140,8 +140,8 @@ const page = () => {
           <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4">
             <div className="flex flex-col gap-4 md:p-16">
               {Skills.map((item, i) => (
-                <div key={i} className="flex flex-row gap-4">
-                  <span className="grid place-items-center rounded-full bg-umurava p-4 text-white">
+                <div key={i} className="flex flex-row items-center gap-4">
+                  <span className="grid place-items-center size-12 rounded-full bg-umurava p-4 text-white">
                     {i + 1}
                   </span>
                   <p>{item}</p>

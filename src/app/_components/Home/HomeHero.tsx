@@ -52,8 +52,8 @@ const HomeHero = () => {
 
   return (
     <>
-      <div className="relative grid min-h-[720px] grid-cols-1 gap-5 px-8 lg:grid-cols-2">
-        <div className="flex flex-col justify-center gap-4 px-8 md:px-16 my-20">
+      <div className="relative grid min-h-[720px] grid-cols-1 gap-5 px-8 md:px-36 lg:grid-cols-2 ">
+        <div className="flex flex-col justify-center gap-4 my-20 w-[100%] md:w-[90%]">
           <h1 className="text-[2.7rem] text-umurava">
             Build Work Experience through Skills Challenges Program
           </h1>

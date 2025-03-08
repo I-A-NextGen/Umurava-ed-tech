@@ -131,12 +131,13 @@ const page = () => {
               />
             ))}
         </div>
-        <div className="mt-6 flex min-h-screen flex-wrap justify-center gap-x-6 gap-y-4">
+        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2  lg:grid-cols-3 gap-x-6 gap-y-4">
           {!loading &&
             competitions.competitions.map((competition) => {
               if (activeTab === "all") {
                 return (
                   <TaskCard
+                  className="w-full "
                     size={20.5}
                     competitionData={competition}
                     key={competition.id}

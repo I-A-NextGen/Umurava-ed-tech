@@ -6,5 +6,5 @@ import { Menu } from "lucide-react"
 export function CustomTrigger() {
   const { toggleSidebar } = useSidebar()
 
-  return <button onClick={toggleSidebar} className=" bg-white p-2"><Menu/></button>
+  return <button onClick={toggleSidebar} className=" bg-white p-2 sm:hidden inline"><Menu/></button>
 }

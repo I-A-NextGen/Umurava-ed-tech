@@ -5,7 +5,7 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <div className="min-h- grid min-h-fit grid-cols-1 px-8 py-8 md:grid-cols-2 md:gap-16 md:px-16">
+      <div className="min-h- grid min-h-fit grid-cols-1 px-8 py-8 md:grid-cols-2 md:gap-16 md:px-16 lg:px-32">
         <div className="flex flex-col justify-center gap-4">
           <h2 className="font-black">Our Story</h2>
           <p className="mt-8">
@@ -21,7 +21,7 @@ const page = () => {
             job markets.
           </p>
         </div>
-        <div className="relative min-h-fit  p-8">
+        <div className="relative min-h-fit  ">
           <video src="" className="h-96 object-cover"  autoPlay loop>
             <source src="/-9844-4599-a3ad-736e0dbdf70d.mp4" type="video/mp4" />
           </video>

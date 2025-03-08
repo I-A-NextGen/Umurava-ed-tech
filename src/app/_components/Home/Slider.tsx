@@ -34,7 +34,7 @@ export default function Slider() {
     <div className="relative w-full h-screen md:h-[512px] overflow-hidden ">
         <div className="p-4 flex flex-row absolute bottom-4 left-1/2 -translate-x-1/2 z-20 gap-4">
             {items.map((item, i) => (
-                <div key={i} className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-500 ease-in-out shadow-md ${i === currentIndex ? "bg-slate-50 ring-1" : "bg-umurava"}`}></div>
+                <div key={i} onClick={() => {setCurrentIndex(i)}} className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-500 ease-in-out shadow-md ${i === currentIndex ? "bg-slate-50 ring-1" : "bg-umurava"}`}></div>
             ))}
         </div>
       {items.map((item, i) => (

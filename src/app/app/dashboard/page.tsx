@@ -22,15 +22,15 @@ import { fetchUserProfile } from "@/lib/redux/actionCreators/profileAction";
 const page = () => {
   const dispatch = useAppDispatch();
 
-    const { profile, loading: profileLoading } = useAppSelector((state) => state.profile);
-   
-  
-    useEffect(() => {
-      if (!profile) {
-        dispatch(fetchUserProfile());
-      }
-    }, [profile]);
+  const { profile, loading: profileLoading } = useAppSelector(
+    (state) => state.profile,
+  );
 
+  useEffect(() => {
+    if (!profile) {
+      dispatch(fetchUserProfile());
+    }
+  }, [profile]);
 
   const { user, isAuthenticated } = useAppSelector((state) => state.auth);
   const { loading, competitions } = useAppSelector(
@@ -51,17 +51,21 @@ const page = () => {
 
   return (
     <>
-      <div className="flex justify-between">
-       <div className="">
-       <h4 className="text-2xl">Welcome back {profile?.lastName},</h4>
-        <p className="text-gray-500">
-          Build Work Experience through Skills Challenges
-        </p>
-       </div>
-       <Button className="bg-umurava" size={"lg"}>
-        <Eye/>
-         View profile
-       </Button>
+      <div className="">
+        <div className="">
+          <h4 className="text-2xl leading-6">
+            Welcome back {profile?.lastName},
+          </h4>
+        </div>
+        <div className="flex flex-col sm:flex-row items-start justify-between sm:items-center">
+          <p className="text-gray-500">
+            Build Work Experience through Skills Challenges
+          </p>
+          <Button className="bg-umurava px-4" size={"lg"}>
+            <Eye />
+            View profile
+          </Button>
+        </div>
       </div>
       {statsLoading && (
         <div className="w-full gap-4">
@@ -119,7 +123,7 @@ const page = () => {
               />
             ))}
         </div>
-        <div className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-4">
+        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2  lg:grid-cols-3 gap-x-5 gap-y-4">
           {!loading &&
             competitions.competitions
               .slice(0, 3)
