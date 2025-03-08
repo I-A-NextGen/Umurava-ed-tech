@@ -10,7 +10,7 @@ import { RxCross2 } from "react-icons/rx";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <nav className="relative flex min-h-[96px] items-center justify-between px-8 md:px-24">
+    <nav className="relative flex min-h-[96px] items-center justify-between px-8 md:px-16 lg:px-32">
       <Link href={"/"} className="relative h-16 w-32">
         <Image
           src={"/Umurava logo.png"}

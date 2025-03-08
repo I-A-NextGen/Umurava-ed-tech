@@ -1,24 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { ICompetition } from "@/lib/redux/features/competition/competitionsReducer";
 import { formatDuration } from "@/lib/utils/formatDuration";
+import { cn } from "@/lib/utils/utils";
 import Link from "next/link";
 import React from "react";
 
 const TaskCard = ({
   competitionData,
   size,
+  className
 }: {
   competitionData: ICompetition;
   size: number;
+  className?:string
 }) => {
   return (
     <div
-      className={`rounded-xl border border-umuravadark/20 capitalize h-fit`}
-      style={{
-        width: `${size}rem`,
-      }}
+      className={
+        cn("rounded-xl border border-umuravadark/20 max-w-[26rem] capitalize w-full flex flex-col justify-between",className)
+      }
+      // style={{
+      //   width: `${size}rem`,
+      // }}
     >
-      <div className="relative flex flex-col gap-4 p-4">
+      <div className="relative flex flex-col gap-4 p-4 ">
         <span className="absolute right-8 top-8 rounded-2xl bg-green-600 p-2 px-4 text-sm text-white md:px-6">
           {competitionData.status}
         </span>
@@ -58,7 +63,7 @@ const TaskCard = ({
           </div>
         </div>
       </div>
-      <div className="border-t border-umuravadark/20 p-4">
+      <div className="border-t border-umuravadark/20 p-4 h-16 flex items-center">
         <Button
           className="size-fit bg-umurava px-5 py-2 font-semibold duration-300 hover:bg-umurava/80"
           asChild

@@ -26,7 +26,7 @@ const Page = () => {
       <div className="min-h-fit px-8 md:px-16">
         <div className="mt-16" />
         <div className="flex items-center pb-8">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center justify-center gap-2">
             <Button className="border rounded-md p-3 size-6" variant={"ghost"}>
               <ArrowLeft />
             </Button>
@@ -37,9 +37,10 @@ const Page = () => {
           </p>
         </div>
       </div>
-      <div className="flex justify-center min-h-screen flex-wrap gap-4 px-8 pb-32 md:grid-cols-2 md:px-16 lg:grid-cols-4">
+      <div className=" justify-center grid grid-cols-1 gap-4 px-8 pb-32 md:grid-cols-2 md:px-16 lg:grid-cols-4">
         {competitions.competitions.map((competition) => (
           <TaskCard
+          className="w-full"
             size={19}
             competitionData={competition}
             key={competition.id}

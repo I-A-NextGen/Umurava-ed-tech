@@ -140,7 +140,7 @@ const page = () => {
           </div>
           <div>
             <h5 className="mb-2">Product Requirements</h5>
-            <p className="pl-2 text-gray-600">{competition.description}</p>
+            <p className="pl-2 text-gray-600">{competition.requirement}</p>
           </div>
           <div>
             <h5 className="mb-2">Deliverables</h5>

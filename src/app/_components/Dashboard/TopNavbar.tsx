@@ -10,7 +10,7 @@ const TopNavbar = ({
   routes: Array<{ label: string; link: string }>;
 }) => {
   return (
-    <div className="md:absolute left-0 top-0 flex max-md:flex-col h-fit w-full md:items-center justify-between border-y border-gray-300 bg-white py-8 px-8">
+    <div className="md:absolute left-0 top-0 flex max-md:flex-col h-fit w-full md:items-center justify-between border-y border-gray-300 bg-white py-2 px-8">
       <div className="flex max-md:flex-col md:items-center gap-x-3 text-gray-500">
         <Link href={routes[routes.length - 2]?.link || ""} className="cursor-pointer flex size-7 md:items-center justify-center rounded-lg border border-gray-300">
           <MoveLeft size={15} />

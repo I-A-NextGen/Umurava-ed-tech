@@ -73,9 +73,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     },
   ];
   const footerlinks: LinkItem[] = [
-    { label: "Settings", href: "/", icon: <Settings /> },
-    { label: "Help Center", href: "/", icon: <Headphones /> },
-    { label: "Refer family & friends", href: "/", icon: <Gift /> },
+    { label: "Settings", href: "#", icon: <Settings /> },
+    { label: "Help Center", href: "#", icon: <Headphones /> },
+    { label: "Refer family & friends", href: "#", icon: <Gift /> },
   ];
 
   const logoutHandler = () => {
